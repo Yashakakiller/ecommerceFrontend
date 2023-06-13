@@ -1,0 +1,1 @@
+export const API_CALL = "https://ecommerce-backend-vyn1.onrender.com"
