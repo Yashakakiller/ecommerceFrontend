@@ -12,7 +12,7 @@ const ProductsDetailPage = () => {
 
   useEffect(()=>{
       fetchData()
-  },[])
+  },[id])
 
 
   const fetchData = async () => {
@@ -22,7 +22,7 @@ const ProductsDetailPage = () => {
   }
 
   return (
-    <div>ProductsDetailPage</div>
+    
   )
 }
 
