@@ -22,7 +22,7 @@ const ProductsDetailPage = () => {
   }
 
   return (
-    <h1>Hello</h1>
+    <h1>{Product.product.name}</h1>
   )
 }
 
