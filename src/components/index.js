@@ -7,3 +7,4 @@ export {default as Categories} from './Categories.jsx';
 export {default as Products} from './Products.jsx';
 export {default as RandomProducts} from './RandomProducts.jsx';
 export {default as Footer} from './Footer.jsx';
+export {default as ProductDetailPage} from './ProductDetailPage.jsx'

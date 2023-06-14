@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { API_CALL } from '../api';
 
@@ -48,7 +48,8 @@ const Products = () => {
               <h5 className="card-title">{product.name}</h5>
               <p className="card-text">{product.desc}</p>
               <p className="card-price">₹ <b>{product.price}</b></p>
-              <a href="#" className="btn btn-primary">Buy Now</a>
+              <Link to="/" className="w-50 btn btn-primary d-block my-0 mx-auto">Buy Now</Link>
+              <Link to={`/product/${product._id}`} className="w-100 my-2 btn btn-secondary">View Product</Link>
             </div>
           </div>
         </div>
