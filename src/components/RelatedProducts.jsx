@@ -26,6 +26,7 @@ const RelatedProducts = ({ id }) => {
 
     fetchData();
   }, []);
+
   const [relatedProducts, setRelatedProducts] = useState([]);
 
   useEffect(() => {
@@ -54,7 +55,6 @@ const RelatedProducts = ({ id }) => {
       console.log(error.message);
     }
   };
-
 
   return (
     <>
@@ -98,7 +98,7 @@ const RelatedProducts = ({ id }) => {
                     </>
                   )}
 
-{user.wishlist.includes(product._id) ? (
+                  {user && user.wishlist && user.wishlist.includes(product._id) ? (
                     <button
                       className="btn btn-secondary d-block my-3 mx-auto disabled"
                     >
