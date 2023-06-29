@@ -65,10 +65,6 @@ const ProductsDetailPage = () => {
     }
   };
 
-
-
-
-
   return (
     <>
       <section className="product-section mt-4">
@@ -101,7 +97,7 @@ const ProductsDetailPage = () => {
                   <button className="btn btn-warning d-block my-5 mx-auto">
                     Buy Now
                   </button>
-                  {user.wishlist.includes(product._id) ? (
+                  {user && user.wishlist && user.wishlist.includes(product._id) ? (
                     <button
                       className="btn btn-secondary d-block my-3 mx-auto disabled"
                     >
