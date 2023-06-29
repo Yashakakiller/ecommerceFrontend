@@ -45,7 +45,7 @@ const UserProfile = () => {
 
   const uploadImage = async () => {
     try {
-      await axios.post("http://localhost:5000/accounts/user", { img: image, id: id });
+      await axios.post(`${API_CALL}/accounts/user`, { img: image, id: id });
 
     } catch (error) {
     //  console.log('Error uploading image:', error);
@@ -58,7 +58,7 @@ const UserProfile = () => {
    
     const fetchImages = async () => {
       try {
-        const response = await axios.post("http://localhost:5000/accounts/user/get", { id: id });
+        const response = await axios.post(`${API_CALL}/accounts/user/get`, { id: id });
         setImages(response.data);
         
       } catch (error) {
