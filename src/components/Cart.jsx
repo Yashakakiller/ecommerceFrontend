@@ -23,10 +23,10 @@ const Cart = () => {
             },
           }
         );
-        console.log(response);
+     //   console.log(response);
         setUser(response.data.data.cart);
       } catch (error) {
-        console.log(error);
+       // console.log(error);
       }
     };
 

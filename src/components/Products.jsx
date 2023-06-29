@@ -29,7 +29,7 @@ const Products = () => {
         );
         setUser(response.data.data);
       } catch (error) {
-        console.log(error);
+      //  console.log(error);
       }
     };
 
@@ -68,7 +68,7 @@ const Products = () => {
 
       updateSharedData(user.wishlist.length + 1);
     } catch (error) {
-      console.log(error.message);
+  //    console.log(error.message);
     }
   };
 

@@ -32,7 +32,7 @@ const UserOrders = () => {
     fetchData();
   }, [id]);
 
-  console.log(cartItems);
+ // console.log(cartItems);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,7 +44,7 @@ const UserOrders = () => {
         });
         setUser(response.data.data.orders);
       } catch (error) {
-        console.log(error);
+      //  console.log(error);
       }
     };
 

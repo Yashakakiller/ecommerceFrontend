@@ -18,7 +18,7 @@ const UserProfile = () => {
 
         setUser(userData);
       } catch (error) {
-        console.log(error);
+      //  console.log(error);
       }
     };
 
@@ -38,7 +38,7 @@ const UserProfile = () => {
       setImage(reader.result);
     };
     reader.onerror = (error) => {
-      console.log(error.message);
+     // console.log(error.message);
     };
     reader.readAsDataURL(e.target.files[0]);
   };
@@ -48,7 +48,7 @@ const UserProfile = () => {
       await axios.post("http://localhost:5000/accounts/user", { img: image, id: id });
 
     } catch (error) {
-      console.log('Error uploading image:', error);
+    //  console.log('Error uploading image:', error);
     }
   };
 
@@ -62,7 +62,7 @@ const UserProfile = () => {
         setImages(response.data);
         
       } catch (error) {
-        console.log('Error fetching images:', error);
+     //   console.log('Error fetching images:', error);
       }
     };
     

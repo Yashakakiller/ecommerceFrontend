@@ -22,7 +22,7 @@ const ProductsDetailPage = () => {
         );
         setUser(response.data.data);
       } catch (error) {
-        console.log(error);
+       // console.log(error);
       }
     };
 
@@ -49,7 +49,7 @@ const ProductsDetailPage = () => {
       );
       // console.log(response.data);
     } catch (error) {
-      console.log(error.message);
+    //  console.log(error.message);
     }
   };
 
@@ -59,9 +59,9 @@ const ProductsDetailPage = () => {
         `${API_CALL}/cart/user/${user._id}`,
         { _id, quantity }
       );
-      console.log(response.data);
+    //  console.log(response.data);
     } catch (error) {
-      console.log(error.message);
+    //  console.log(error.message);
     }
   };
 
