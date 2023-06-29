@@ -1,21 +1,25 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaShoppingCart, FaHeart } from 'react-icons/fa';
 import { API_CALL } from '../api';
+import { MyContext } from '../Context';
+import axios from 'axios';
 
 const Navbar = () => {
+  // const [searchTerm, setSearchTerm] = useState('');
+  // const [searchResults, setSearchResults] = useState([]);
+  const { sharedData, updateSharedData } = useContext(MyContext);
   const [user, setUser] = useState([]);
+
   useEffect(() => {
-    // /accounts/user/auth/user/details
     const fetchData = async () => {
       try {
-        const response = await axios.post(`  ${API_CALL}/accounts/user/auth/user/details`
-        ,
+        const response = await axios.post(
+          `${API_CALL}/accounts/user/auth/user/details`,
           null,
           {
             headers: {
-              token: `${localStorage.getItem("token")}`,
+              token: `${localStorage.getItem('token')}`,
             },
           }
         );
@@ -28,11 +32,22 @@ const Navbar = () => {
     fetchData();
   }, []);
 
+  // const handleSearch = async () => {
+  //   try {
+  //     const response = await axios.get(`${API_CALL}/products/searchproduct/name`, {
+  //       params: { query: searchTerm },
+  //     });
+  //     setSearchResults(response.data.products);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
   const navigate = useNavigate();
 
   const logoutHandler = () => {
     localStorage.removeItem('token');
-    navigate("/login");
+    navigate('/login');
   };
 
   return (
@@ -60,33 +75,33 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
+          {/* <div className="d-flex">
+            <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+            <button className="btn btn-primary mx-2" onClick={handleSearch}>
+              Search
+            </button>
+          </div> */}
           {localStorage.getItem('token') ? (
             <>
-             <div className="d-flex">
-            <Link className="btn btn-light m-2" to="/cart">
-              <FaShoppingCart className="me-1" />
-              Cart
-            </Link>
-            <Link className="btn btn-light m-2" to="/wishlist">
-              <FaHeart className="me-1" />
-              Wishlist
-            </Link>
-          </div>
+              <div className="d-flex">
+                <Link className="btn btn-light m-2" to={`/cart/user/${user._id}`}>
+                  <FaShoppingCart className="me-1" />
+                  Cart
+                </Link>
+                <Link className="btn btn-light m-2" to={`/wishlist/user/${user._id}`}>
+                  <FaHeart className="me-1" />
+                  Wishlist {sharedData}
+                </Link>
+              </div>
               <Link className="btn btn-danger m-2 text-light" onClick={logoutHandler}>
                 Logout
               </Link>
               <Link className="btn btn-success m-2" to={`/accounts/profile/user/${user._id}`}>
-                Welcome {user.firstName}
+                Welcome
               </Link>
             </>
           ) : (
             <>
-             {/* <div className="d-flex">
-            <Link className="btn btn-light m-2" to="/wishlist">
-              <FaHeart className="me-1" />
-              Wishlist
-            </Link>
-          </div> */}
               <Link className="btn btn-warning m-2 text-light" to="/login">
                 Login
               </Link>
@@ -95,9 +110,9 @@ const Navbar = () => {
               </Link>
             </>
           )}
-         
         </div>
       </div>
+      
     </nav>
   );
 };

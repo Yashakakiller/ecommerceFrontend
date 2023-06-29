@@ -9,7 +9,7 @@ export default function Carousel() {
                 <div className="carousel-inner " id='carousel'>
                
                     <div className="carousel-item active" >
-                        <img src="https://source.unsplash.com/random/900x500/?sarees" className="d-block w-100  " style={{ filter: "brightness(30%)" }} alt="..." />
+                        <img src="https://source.unsplash.com/random/900x500/?men" className="d-block w-100  " style={{ filter: "brightness(30%)" }} alt="..." />
                     </div>
                     <div className="carousel-item">
                         <img src="https://source.unsplash.com/random/900x500/?suit" className="d-block w-100 " style={{ filter: "brightness(30%)" }} alt="..." />

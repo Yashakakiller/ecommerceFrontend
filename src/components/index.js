@@ -7,4 +7,10 @@ export {default as Categories} from './Categories.jsx';
 export {default as Products} from './Products.jsx';
 export {default as RandomProducts} from './RandomProducts.jsx';
 export {default as Footer} from './Footer.jsx';
-export {default as ProductDetailPage} from './ProductDetailPage.jsx'
+export {default as ProductDetailPage} from './ProductDetailPage.jsx';
+export {default as Wishlist} from './Wishlist.jsx';
+export {default as Cart} from './Cart.jsx';
+export {default as OrderPageSuccessfull} from './OrderPageSuccessfull.jsx';
+export {default as UserOrders} from './UserOrders.jsx';
+export {default as RelatedProducts} from './RelatedProducts.jsx';
+export {default as Search} from './Search.jsx';

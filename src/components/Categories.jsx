@@ -12,7 +12,7 @@ const Categories = () => {
     fetchData();
   }, []);
 
-  // /categories/allcategories
+
   const fetchData = async () => {
     try {
       const response = await axios.get(`${API_CALL}/categories/allcategories`);
@@ -34,7 +34,6 @@ const Categories = () => {
               <img src={category.img} className="card-img-top" alt="Card" style={{maxHeight:"400px"}}/>
               <div className="card-body">
                 <h5 className="card-title text-center fs-2">{category.name}</h5>
-                {/* <p className="card-text">{category.desc}</p> */}
                 <Link to={`/products/byCategory/${category.name}`} className="text-light btn btn-warning d-block">Checkout {category.name}</Link>
               </div>
             </div>

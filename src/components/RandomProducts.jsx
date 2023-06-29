@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { API_CALL } from '../api';
 
+
+
 const RandomProducts = () => {
   const [randomProducts, setRandomProducts] = useState([]);
 
@@ -30,7 +32,7 @@ const RandomProducts = () => {
             <img src={product.img} className="card-img-top" alt="Card" style={{ maxHeight: "400px" }} />
             <div className="card-body">
               <h5 className="card-title text-center fs-2">{product.name}</h5>
-              <Link to={`/products/byCategory/${product.name}`} className="text-light btn btn-dark d-block">Checkout {product.name}</Link>
+              <Link to={`/product/${product._id}`} className="text-light btn btn-dark d-block">Checkout {product.name}</Link>
             </div>
           </div>
         ))}
