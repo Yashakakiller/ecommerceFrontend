@@ -1,12 +1,14 @@
 import React from 'react'
-import { Carousel, Categories, RandomProducts, Search } from '../components'
+import { Carousel, Categories, NewArrivals, NewsLetter, RandomProducts, Search } from '../components'
 
 const Home = () => {
   return (
     <>
     <Carousel />
-    <Search />
- 
+    <Categories />
+    <RandomProducts />
+    <NewArrivals />
+    <NewsLetter />
     </>
   )
 }

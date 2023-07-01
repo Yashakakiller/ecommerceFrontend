@@ -1,37 +1,29 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import i2 from '../../public/shoes ecommerce.jpg';
+import i3 from '../../public/b2.jpg';
+import i4 from '../../public/b3.jpg';
+import i5 from '../../public/b4.jpg';
 
 export default function Carousel() {
-    return (
-        <div>
+  const bannerImages = [ i2,i3,i4,i5]; 
 
-            <div id="carouselExampleFade" className="carousel slide carousel-fade " data-bs-ride="carousel">
+  const [currentImage, setCurrentImage] = useState(null);
 
-                <div className="carousel-inner " id='carousel'>
-               
-                    <div className="carousel-item active" >
-                        <img src="https://source.unsplash.com/random/900x500/?men" className="d-block w-100  " style={{ filter: "brightness(30%)" }} alt="..." />
-                    </div>
-                    <div className="carousel-item">
-                        <img src="https://source.unsplash.com/random/900x500/?suit" className="d-block w-100 " style={{ filter: "brightness(30%)" }} alt="..." />
-                    </div>
-                    <div className="carousel-item">
-                        <img src="https://source.unsplash.com/random/900x500/?lehenga" className="d-block w-100 " style={{ filter: "brightness(30%)" }} alt="..." />
-                    </div>
-                    <div className="carousel-item">
-                        <img src="https://source.unsplash.com/random/900x500/?dress" className="d-block w-100 " style={{ filter: "brightness(30%)" }} alt="..." />
-                    </div>
-                </div>
-                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span className="visually-hidden">Previous</span>
-                </button>
-                <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span className="visually-hidden">Next</span>
-                </button>
-            </div>
+  useEffect(() => {
+    let index = 0;
+    const interval = setInterval(() => {
+      setCurrentImage(bannerImages[index]);
+      index = (index + 1) % bannerImages.length;
+    }, 3000);
 
+    return () => clearInterval(interval); 
+  }, []);
 
-        </div>
-    )
+  return (
+    <>
+      <section id="hero">
+        <img src={currentImage} alt="Banner" disabled/>
+      </section>
+    </>
+  );
 }

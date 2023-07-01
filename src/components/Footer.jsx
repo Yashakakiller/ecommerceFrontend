@@ -1,37 +1,49 @@
 import React from 'react';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import {BsFacebook, BsTwitter, BsInstagram} from 'react-icons/bs'
 import { Link } from 'react-router-dom';
 
 
 const Footer = () => {
   return (
-    <footer className="bg-dark text-light mt-4">
-      <div className="container py-5">
-        <TransitionGroup>
-          <CSSTransition classNames="fade" timeout={500}>
-            <div className="row justify-content-center">
-              <div className="col-12 col-md-6 text-center">
-                <h3 className="mb-4">Connect with us</h3>
-                <div className="social-icons">
-                  <Link to="/" className="social-icon">
-                    <FontAwesomeIcon icon={faFacebook} />
-                  </Link>
-                  <Link to="/" className="social-icon">
-                    <FontAwesomeIcon icon={faTwitter} />
-                  </Link>
-                  <Link to="/" className="social-icon">
-                    <FontAwesomeIcon icon={faInstagram} />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </CSSTransition>
-        </TransitionGroup>
-      <h1 className='text-center fs-2 mt-4'>Developed & Maintained By Yash Gupta</h1>
+   <>
+    <footer id='footer' className='section-p1'>
+      <div className="col">
+        <img className='flogo' src="/logo-white.png" alt='logo' style={{width:"80px"}}/>
+        <h4>Contact</h4>
+        <p><strong>Address</strong> 44 Jawahar Colony Tonk Road Jaipur</p>
+        <p><strong>Phone</strong> +91 9928585137</p>
+        <p><strong>Hours</strong> 24 Hours Available</p>
+        <p><strong>Email</strong> yashakakiller@gmail.com</p>
+        <div className="follow">
+          <h4>Follow Us</h4>
+          <div className="icon">
+            <BsFacebook />
+            <BsTwitter />
+            <BsInstagram />
+          </div>
+        </div>
+      </div>
+      <div className="col">
+        <h4>About</h4>
+        <Link to="/">About Us</Link>
+        <Link to="/">Privacy Policy</Link>
+        <Link to="/">Contact Us</Link>
+        <Link to="/">Terms & Conditions</Link>
+      </div>
+      <div className="col">
+        <h4>About</h4>
+        <Link to="/">About Us</Link>
+        <Link to="/">Privacy Policy</Link>
+        <Link to="/">Contact Us</Link>
+        <Link to="/">Terms & Conditions</Link>
+      </div>
+      
+      <div className="copyright">
+        <h4>Payment Gateways</h4>
+       <img src="https://raw.githubusercontent.com/tech2etc/Build-and-Deploy-Ecommerce-Website/main/img/pay/pay.png" />
       </div>
     </footer>
+   </>
   );
 };
 

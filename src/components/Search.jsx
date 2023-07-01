@@ -92,8 +92,8 @@ const Search = () => {
 
       {searchTerm === null || searchTerm === '' || searchTerm === ' ' ? (
         <>
-          <Categories />
-          <RandomProducts />
+          {/* <Categories /> */}
+          {/* <RandomProducts /> */}
         </>
       ) : (
         <>
