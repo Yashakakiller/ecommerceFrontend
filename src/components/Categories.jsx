@@ -54,7 +54,7 @@ const Categories = () => {
           return (
             <>
               <div className='cgty_box'>
-                <img src={cgty.img} style={{width:"150px"}} alt='category image' />
+                <img src={cgty.img} alt='category image' />
                 <Link to={`/products/byCategory/${cgty.name}`}><h6>{cgty.name}</h6></Link>
               </div>
             </>

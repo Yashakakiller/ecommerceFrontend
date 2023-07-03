@@ -157,7 +157,7 @@ const Navbar = () => {
 
                       <li><Link to={`/accounts/profile/user/${user._id}`}><BiUserCircle /></Link></li>
 
-                      {/* <li><Link onClick={logoutHandler}>Logout</Link></li> */}
+                      <li><Link onClick={logoutHandler}>Logout</Link></li>
 
                      
                     </>) : (

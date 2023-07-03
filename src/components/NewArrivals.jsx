@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { API_CALL } from '../api'
 
 
 const NewArrivals = () => {
     const [products , setProducts] = useState([])
 
     const fetchProducts = async() =>{
-        const products = await axios.get("http://localhost:5000/products/try");
+        const products = await axios.get(`${API_CALL}/products/try`);
         setProducts(products.data)
     }
     useEffect(()=>{
@@ -16,8 +17,8 @@ console.log(products)
   return (
     <>
         <section id="newProducts" className='section-p1'>
-        <h2>New Arrivals</h2>
-        <p>Get the Best of Rest!</p>
+        <h2>Upcoming Arrivals</h2>
+        <p>Get Ready for Trends!</p>
         <div className="new_container">
           {products.map((data) => {
               return (<div >
@@ -27,7 +28,7 @@ console.log(products)
                 <div className="desc">
                   <h5>{data.name}</h5>
                 </div>
-                <img src="../../public/new_arrival.png" alt="" className="newAlogo" />
+                {/* <img src="/new_arrival.png" alt="" className="newAlogo" /> */}
               </div>
              
             </div>)
