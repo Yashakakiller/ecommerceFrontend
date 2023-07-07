@@ -8,17 +8,19 @@ const UserOrders = () => {
   const [cartItems, setCartItems] = useState([]);
   const [user, setUser] = useState([]);
 
- 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${API_CALL}/accounts/user/singleuser/${id}`);
+        const response = await axios.get(
+          `${API_CALL}/accounts/user/singleuser/${id}`
+        );
         const cart = response.data[0].orders || [];
 
         const itemsWithProductDetails = await Promise.all(
           cart.map(async (itemId) => {
-            const productResponse = await axios.get(`${API_CALL}/products/product/${itemId}`);
+            const productResponse = await axios.get(
+              `${API_CALL}/products/product/${itemId}`
+            );
             return productResponse.data.product;
           })
         );
@@ -32,19 +34,21 @@ const UserOrders = () => {
     fetchData();
   }, [id]);
 
- // console.log(cartItems);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post(`${API_CALL}/accounts/user/auth/user/details`, null, {
-          headers: {
-            token: `${localStorage.getItem('token')}`,
-          },
-        });
+        const response = await axios.post(
+          `${API_CALL}/accounts/user/auth/user/details`,
+          null,
+          {
+            headers: {
+              token: `${localStorage.getItem('token')}`,
+            },
+          }
+        );
         setUser(response.data.data.orders);
       } catch (error) {
-      //  console.log(error);
+        // console.log(error);
       }
     };
 
@@ -53,32 +57,35 @@ const UserOrders = () => {
 
   return (
     <>
-    {cartItems.length > 0 ? (<div className="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Product ID</th>
-            <th>Product Name</th>
-            <th>Product Price</th>
-            <th>Product Image</th>
-            {/* <th>Product Image</th> */}
-          </tr>
-        </thead>
-        <tbody>
-          {cartItems.map((data,index) => {
-            return (
-              <tr key={index}>
-                <td className='text-dark fs-6'>{data._id}</td>
-                <td className='text-dark fs-4'>{data.name}</td>
-                <td className='text-dark fs-4'>{data.price}</td>
-                <td><img src={data.img} style={{width:"100px"}}/></td>
+      {cartItems.length > 0 ? (
+        <div className="container my-4">
+          <h2 className="text-center">User Orders</h2>
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Product Image</th>
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>) : (<h1 className='text-center'>You haven't Order Any Product Yet !!</h1>)}
-    
+            </thead>
+            <tbody>
+              {cartItems.map((data, index) => (
+                <tr key={index}>
+                  <td className="text-dark fs-6">{data._id}</td>
+                  <td className="text-dark fs-4">{data.name}</td>
+                  <td className="text-dark fs-4">₹ {data.price}</td>
+                  <td>
+                    <img src={data.img} style={{ width: '100px' }} alt={data.name} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <h1 className="text-center">You haven't ordered any product yet!</h1>
+      )}
     </>
   );
 };

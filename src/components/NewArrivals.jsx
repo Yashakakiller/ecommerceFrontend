@@ -7,8 +7,9 @@ const NewArrivals = () => {
     const [products , setProducts] = useState([])
 
     const fetchProducts = async() =>{
-        const products = await axios.get(`${API_CALL}/products/try`);
-        setProducts(products.data)
+        const products = await axios.get(`${API_CALL}/products/newArrivals`);
+        setProducts(products.data.products)
+        
     }
     useEffect(()=>{
         fetchProducts()
@@ -17,7 +18,7 @@ console.log(products)
   return (
     <>
         <section id="newProducts" className='section-p1'>
-        <h2>Upcoming Arrivals</h2>
+        <h2>New Arrivals</h2>
         <p>Get Ready for Trends!</p>
         <div className="new_container">
           {products.map((data) => {

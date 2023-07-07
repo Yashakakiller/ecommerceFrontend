@@ -25,7 +25,7 @@ const Wishlist = () => {
         );
         setUser(response.data.data);
       } catch (error) {
-       // console.log(error);
+        // console.log(error);
       }
     };
 
@@ -73,62 +73,54 @@ const Wishlist = () => {
     }
   };
 
-  // const addToCart = async (_id) => {
-  //   try {
-  //     const response = await axios.post(
-  //       `${API_CALL}/cart/user/${user._id}`,
-  //       { _id } 
-  //     );
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
-  
-
   return (
     <>
       {localStorage.getItem('token') ? (
         <>
           <div className="container my-4 bg-dark p-2">
-            <h2 className="text-center text-light">Wishlist</h2>
+            <h2 className="text-center text-light" style={{fontFamily:"cursive"}}>Wishlist</h2>
             {wishlistItems.length === 0 ? (
               <p className="text-light text-center">No items in the wishlist.</p>
             ) : (
-              <table className="table table-striped">
-                <thead className="thead-success">
-                  <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Product Image</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {wishlistItems.map((item) => (
-                    <tr key={item._id}>
-                      <td className="fs-3">{item.name}</td>
-                      <td className="fs-3">₹ {item.price}</td>
-                      <td>
-                        <img src={item.img} alt={item.name} style={{ width: '150px' }} />
-                      </td>
-                      <td style={{ cursor: 'pointer', fontSize: '30px' }}>
-                        <Link to={`/product/${item._id}`} className="btn btn-primary p-2 m-2">
-                          View Product
-                        </Link>
-                        <br />
-                        {/* <Link
-                          className="btn btn-warning p-2 m-2"
-                          onClick={() => addToCart(item._id)}
-                        >
-                          Add To Cart
-                        </Link> */}
-                        <BsTrash onClick={() => removeWishlist(item._id)} />
-                      </td>
+              <div className="table-responsive">
+                <table className="table table-striped">
+                  <thead className="thead-dark">
+                    <tr>
+                      <th>Name</th>
+                      <th>Price</th>
+                      <th>Product Image</th>
+                      <th>Actions</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {wishlistItems.map((item) => (
+                      <tr key={item._id}>
+                        <td className="fs-5">{item.name}</td>
+                        <td className="fs-5">₹ {item.price}</td>
+                        <td>
+                          <img src={item.img} alt={item.name} style={{ width: '150px' }} />
+                        </td>
+                        <td>
+                          <div className="d-flex flex-column align-items-center">
+                            <Link
+                              to={`/product/${item._id}`}
+                              className="btn btn-primary mb-2"
+                            >
+                              View Product
+                            </Link>
+                            <button
+                              className="btn btn-danger"
+                              onClick={() => removeWishlist(item._id)}
+                            >
+                              <BsTrash />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             )}
           </div>
         </>

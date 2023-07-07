@@ -4,6 +4,8 @@ import { Navbar, UserProfile, Login, Signup, Products, Footer, ProductDetailPage
 import './App.css'
 import Home from './Screen/Home';
 import ContextProviderComponent from './Context';
+import AddProductForm from './AddProductForm';
+import F from '../F';
 
 
 
@@ -24,6 +26,7 @@ const App = () => {
         <Route path="/order_successfull/:id" element={<OrderPageSuccessfull />} />
         <Route path='/orders/user/:id' element={<UserOrders />} />
         <Route path="/allproducts" element={< AllProducts />} />
+        <Route path="/addProduct" element={<AddProductForm />} />
       </Routes>
 
       <Footer />
