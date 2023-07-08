@@ -4,6 +4,7 @@ import { API_CALL } from '../api';
 import axios from 'axios';
 import d from '../../public/d.png';
 import dd2 from '../../public/dd2.png';
+import { BsTrash } from 'react-icons/bs';
 
 const Cart = () => {
   const images = [d, dd2];
@@ -12,8 +13,6 @@ const Cart = () => {
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
   const { id } = useParams();
-
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,6 +62,22 @@ const Cart = () => {
     fetchData();
   }, [id]);
 
+  const removeFromCart = async (productId) => {
+    try {
+      const response = await axios.delete(`${API_CALL}/cart/user/${user._id}`, {
+        data: { _id: productId },
+      });
+      console.log(response.data);
+      // Update the cart items state after successful removal
+      setCartItems((prevItems) =>
+        prevItems.filter((item) => item._id !== productId)
+      );
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  
+
   return (
     <>
       {localStorage.getItem('token') ? (
@@ -82,23 +97,33 @@ const Cart = () => {
                       <th>Image</th>
                       <th>Quantity</th>
                       <th>Price</th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
-                    {cartItems.map((data) => (
-                      <tr key={data._id}>
-                        <td>{data._id}</td>
-                        <td>{data.categoryName}</td>
-                        <td>{data.name}</td>
-                        <td>
-                          <img alt="" src={data.img} />
-                        </td>
-                        <td>{data.quantity}</td>
-                        <td>
-                          <strong>₹ {data.price}</strong>
-                        </td>
-                      </tr>
-                    ))}
+                  {cartItems.map((item) => (
+  <tr key={item._id}>
+    <td>{item._id}</td>
+    <td>{item.categoryName}</td>
+    <td>{item.name}</td>
+    <td>
+      <img alt="" src={item.img} />
+    </td>
+    <td>{item.quantity}</td>
+    <td>
+      <strong>₹ {item.price}</strong>
+    </td>
+    <td>
+      <button
+        className="remove-btn"
+        onClick={() => removeFromCart(item._id)}
+      >
+        <BsTrash />
+      </button>
+    </td>
+  </tr>
+))}
+
                   </tbody>
                 </table>
               </section>

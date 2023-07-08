@@ -45,7 +45,7 @@ const Wishlist = () => {
         const response = await axios.get(`${API_CALL}/accounts/user/singleuser/${id}`);
         const wishlist = response.data[0].wishlist || [];
         
-        console.log(user.cart)
+        console.log(response.data)
 
         const itemsWithProductDetails = await Promise.all(
           wishlist.map(async (itemId) => {
@@ -86,7 +86,7 @@ const Wishlist = () => {
     <>
       {localStorage.getItem('token') ? (
         <>
-          {wishlistItems.length === 0 || wishlistItems === null ? (
+          {wishlistItems.length == 0 || wishlistItems === null ? (
             <div className="wishlistContainer">
               <h3>No Items in the Wishlist</h3>
               <img alt="" src={images[randomImage]} />
@@ -109,28 +109,33 @@ const Wishlist = () => {
             <th> Image </th>
             <th> </th>
             <th> Price</th>
+            <th></th>
 
           </tr>
         </thead>
         <tbody>
-          {wishlistItems.map((data)=>{
-            return (<>
-            <tr>
-            <td> {data._id} </td>
-            <td>{data.categoryName}</td>
-            <td> {data.name} </td>
-            <td><img alt='' src={data.img}/></td>
-            <td> </td>
-            
-            <td> <strong> ₹ {data.price} </strong></td>
-          </tr>
-         
-            </>)
-          })}
-          
-          
-         
-        </tbody>
+  {wishlistItems.map((data) => (
+    <tr key={data._id}>
+      <td>{data._id}</td>
+      <td>{data.categoryName}</td>
+      <td>{data.name}</td>
+      <td>
+        <img alt="" src={data.img} />
+      </td>
+      <td></td>
+      <td>
+        <strong>₹ {data.price}</strong>
+      </td>
+      <td>
+        <BsTrash
+          style={{ cursor: "pointer" }}
+          onClick={() => removeWishlist(data._id)}
+        />
+      </td>
+    </tr>
+  ))}
+</tbody>
+
       </table>
     </section>
   </main>

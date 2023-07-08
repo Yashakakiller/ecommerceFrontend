@@ -743,4 +743,8 @@ tbody td.active {
   width: 270px;
 }
 
+table thead tr th:first-child , tbody tr td:first-child  {
+  display: none;
+}
+
 }

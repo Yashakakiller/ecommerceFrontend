@@ -58,20 +58,18 @@ const ProductsDetailPage = () => {
     }
   };
 
-  const addToCart = async (_id, selectedQuantity) => {
+  const addToCart = async (_id) => {
     try {
-      const quantity = selectedQuantity || 1; // Use selectedQuantity if available, otherwise default to 1
-  
       const response = await axios.post(`${API_CALL}/cart/user/${user._id}`, {
         _id,
-        quantity,
+        quantity: quantity // Pass the selected quantity
       });
-  
       console.log(response.data);
     } catch (error) {
       console.log(error.message);
     }
   };
+  
   
 
   const handleImage = (e, image) => {
