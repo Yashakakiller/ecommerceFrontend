@@ -4,8 +4,15 @@ import { API_CALL } from '../api';
 import axios from 'axios';
 import { BsTrash } from 'react-icons/bs';
 import { MyContext } from '../Context';
+import d from '../../public/d.png'
+import dd2 from '../../public/dd2.png'
+
 
 const Wishlist = () => {
+  const images = [d , dd2]
+  const randomImage = Math.floor(Math.random() * images.length);
+// console.log(randomImage);
+
   const { sharedData, updateSharedData } = useContext(MyContext);
   const { id } = useParams();
   const [wishlistItems, setWishlistItems] = useState([]);
@@ -37,6 +44,8 @@ const Wishlist = () => {
       try {
         const response = await axios.get(`${API_CALL}/accounts/user/singleuser/${id}`);
         const wishlist = response.data[0].wishlist || [];
+        
+        console.log(user.cart)
 
         const itemsWithProductDetails = await Promise.all(
           wishlist.map(async (itemId) => {
@@ -77,76 +86,81 @@ const Wishlist = () => {
     <>
       {localStorage.getItem('token') ? (
         <>
-          <div className="container my-4 bg-dark p-2">
-            <h2 className="text-center text-light" style={{fontFamily:"cursive"}}>Wishlist</h2>
-            {wishlistItems.length === 0 ? (
-              <p className="text-light text-center">No items in the wishlist.</p>
-            ) : (
-              <div className="table-responsive">
-                <table className="table table-striped">
-                  <thead className="thead-dark">
-                    <tr>
-                      <th>Name</th>
-                      <th>Price</th>
-                      <th>Product Image</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {wishlistItems.map((item) => (
-                      <tr key={item._id}>
-                        <td className="fs-5">{item.name}</td>
-                        <td className="fs-5">₹ {item.price}</td>
-                        <td>
-                          <img src={item.img} alt={item.name} style={{ width: '150px' }} />
-                        </td>
-                        <td>
-                          <div className="d-flex flex-column align-items-center">
-                            <Link
-                              to={`/product/${item._id}`}
-                              className="btn btn-primary mb-2"
-                            >
-                              View Product
-                            </Link>
-                            <button
-                              className="btn btn-danger"
-                              onClick={() => removeWishlist(item._id)}
-                            >
-                              <BsTrash />
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </div>
+          {wishlistItems.length === 0 || wishlistItems === null ? (
+            <div className="wishlistContainer">
+              <h3>No Items in the Wishlist</h3>
+              <img alt="" src={images[randomImage]} />
+            </div>
+          ) : (
+            <>
+               <main className="table">
+    <section className="table__header">
+      <h3>Wishlist Items</h3>
+
+
+    </section>
+    <section className="table__body">
+      <table>
+        <thead>
+          <tr>
+            <th> Id </th>
+            <th> Category Name </th>
+            <th> Name </th>
+            <th> Image </th>
+            <th> </th>
+            <th> Price</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          {wishlistItems.map((data)=>{
+            return (<>
+            <tr>
+            <td> {data._id} </td>
+            <td>{data.categoryName}</td>
+            <td> {data.name} </td>
+            <td><img alt='' src={data.img}/></td>
+            <td> </td>
+            
+            <td> <strong> ₹ {data.price} </strong></td>
+          </tr>
+         
+            </>)
+          })}
+          
+          
+         
+        </tbody>
+      </table>
+    </section>
+  </main>
+            </>
+          )}
         </>
       ) : (
         <>
-          <div className="container">
-            <div className="row justify-content-center mt-5">
-              <div className="col-lg-6">
-                <div className="card">
-                  <div className="card-body">
-                    <h5 className="card-title fs-1">Please Login First</h5>
-                    <p className="card-text fs-4">
-                      To access this page, you need to login to your account.
-                    </p>
-                    <Link to="/login" className="btn btn-secondary">
-                      Login
-                    </Link>
-                  </div>
+           <div className="container">
+          <div className="row justify-content-center mt-5">
+            <div className="col-lg-6">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title fs-4">Please Login First</h5>
+                  <p className="card-text fs-5">
+                    To view your wishlist, please log in to your account.
+                  </p>
+                  <Link to="/login" className="btn btn-primary">
+                    Login
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
+        </div>
         </>
       )}
     </>
   );
+  
 };
 
 export default Wishlist;

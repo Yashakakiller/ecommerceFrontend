@@ -58,17 +58,21 @@ const ProductsDetailPage = () => {
     }
   };
 
-  const addToCart = async (_id, quantity) => {
+  const addToCart = async (_id, selectedQuantity) => {
     try {
+      const quantity = selectedQuantity || 1; // Use selectedQuantity if available, otherwise default to 1
+  
       const response = await axios.post(`${API_CALL}/cart/user/${user._id}`, {
         _id,
         quantity,
       });
+  
       console.log(response.data);
     } catch (error) {
       console.log(error.message);
     }
   };
+  
 
   const handleImage = (e, image) => {
     setSelectedImage(image);
@@ -133,17 +137,23 @@ const ProductsDetailPage = () => {
                 </select>
 
                 <button
-                  className="buy-btn mx-2"
-                  onClick={() => addToCart(product._id, quantity)}
+  className="buy-btn mx-2"
+  onClick={() => addToCart(product._id, quantity)}
+>
+  Add To Cart
+</button>
+                      {user.wishlist.includes(product._id)?(<><button
+                  className="buy-btn"
+                  disabled
                 >
-                  Add To Cart
-                </button>
-                <button
+                  Already Added To Wishlist
+                </button></>):(<><button
                   className="buy-btn"
                   onClick={() => addWishlist(product._id)}
                 >
                   Add To Wishlist
-                </button>
+                </button></>)}
+                
               </>
             )}
             <h4 className="mt-5 mb-5">Product Details</h4>

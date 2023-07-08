@@ -20,32 +20,7 @@ const Categories = () => {
   };
 
   return (
-    // <div className='mt-5' style={{ padding: "5px", marginBottom: "10px" }}>
-    //   <h1 className='text-center head1'>SHOP BY CATEGORY</h1>
-    //   <div className="container d-flex flex-wrap justify-content-center">
-    //     {data.length > 0 ? (
-    //       <>
-    //         {data.map((category) => (
-    //           <div
-    //             className="card m-3"
-    //             key={category._id}
-    //             style={{ width: "280px", maxHeight: "700px", overflow: "hidden",boxShadow:"2px 2px 10px black" }}
-    //           >
-    //             <img src={category.img} className="card-img-top" alt="Card" style={{ maxHeight: "400px" }} />
-    //             <div className="card-body">
-    //               <h5 className="card-title text-center fs-2">{category.name}</h5>
-    //               <Link to={`/products/byCategory/${category.name}`} style={{ background: "#b99835" }} className="text-light btn  d-block">
-    //                 Checkout {category.name}
-    //               </Link>
-    //             </div>
-    //           </div>
-    //         ))}
-    //       </>
-    //     ) : (
-    //       <h3>No Categories Found</h3>
-    //     )}
-    //   </div>
-    // </div>
+ 
 
     <>
       <section id="categories" className='section-p1'>
