@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_CALL } from '../api';
-import { useParams } from 'react-router-dom';
+import d from '../../public/d.png';
+import dd2 from '../../public/dd2.png';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 const UserOrders = () => {
   const { id } = useParams();
-  const [cartItems, setCartItems] = useState([]);
+  const [orderItems, setorderItems] = useState([]);
   const [user, setUser] = useState([]);
+  const navigate = useNavigate()
+
+  const images = [d, dd2];
+  const randomImage = Math.floor(Math.random() * images.length);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +31,7 @@ const UserOrders = () => {
           })
         );
 
-        setCartItems(itemsWithProductDetails);
+        setorderItems(itemsWithProductDetails);
       } catch (error) {
         console.error('Error fetching cart:', error);
       }
@@ -57,34 +63,79 @@ const UserOrders = () => {
 
   return (
     <>
-      {cartItems.length > 0 ? (
-        <div className="container my-4">
-          <h2 className="text-center">User Orders</h2>
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th>Product ID</th>
-                <th>Product Name</th>
-                <th>Product Price</th>
-                <th>Product Image</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cartItems.map((data, index) => (
-                <tr key={index}>
-                  <td className="text-dark fs-6">{data._id}</td>
-                  <td className="text-dark fs-4">{data.name}</td>
-                  <td className="text-dark fs-4">₹ {data.price}</td>
-                  <td>
-                    <img src={data.img} style={{ width: '100px' }} alt={data.name} />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+      {localStorage.getItem('token') ? (
+        <>
+          {orderItems.length == 0 || orderItems === null ? (
+            <div className="wishlistContainer">
+              <h3>You haven't purchased anything yet!</h3>
+              <img alt="" src={images[randomImage]} />
+            </div>
+          ) : (
+            <>
+               <main className="table">
+    <section className="table__header">
+      <h3>Orders Items</h3>
+
+
+    </section>
+    <section className="table__body">
+      <table>
+        <thead>
+          <tr>
+            <th> Id </th>
+            <th> Category Name </th>
+            <th> Name </th>
+            <th> Image </th>
+            <th> </th>
+            <th> Price</th>
+            
+
+          </tr>
+        </thead>
+        <tbody>
+  {orderItems.map((data) => (
+    <tr key={data._id}>
+      <td>{data._id}</td>
+      <td>{data.categoryName}</td>
+      <td>{data.name}</td>
+      <td>
+        <img alt="" src={data.img} />
+      </td>
+      <td></td>
+      <td>
+        <strong>₹ {data.price}</strong>
+      </td>
+     
+    </tr>
+  ))}
+</tbody>
+
+      </table>
+    </section>
+  </main>
+            </>
+          )}
+        </>
       ) : (
-        <h1 className="text-center">You haven't ordered any product yet!</h1>
+        <>
+           <div className="container">
+          <div className="row justify-content-center mt-5">
+            <div className="col-lg-6">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title fs-4">Please Login First</h5>
+                  <p className="card-text fs-5">
+                    To view your wishlist, please log in to your account.
+                  </p>
+                  <Link to="/login" className="btn btn-primary">
+                    Login
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </>
       )}
     </>
   );

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { API_CALL } from '../api';
-import { MyContext } from '../Context';
+
 
 
 const Products = () => {
@@ -10,7 +10,7 @@ const Products = () => {
   const [data, setData] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
-  const { updateSharedData } = useContext(MyContext);
+
   const [user, setUser] = useState([]);
 
 
@@ -66,7 +66,7 @@ const Products = () => {
       );
       // console.log(response.data);
 
-      updateSharedData(user.wishlist.length + 1);
+      
     } catch (error) {
   //    console.log(error.message);
     }

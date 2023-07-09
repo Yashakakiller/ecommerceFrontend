@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Navbar, UserProfile, Login, Signup, Products, Footer, ProductDetailPage, Wishlist, Cart, OrderPageSuccessfull, UserOrders, AllProducts } from './components';
 import './App.css'
 import Home from './Screen/Home';
-import ContextProviderComponent from './Context';
+
 import AddProductForm from './AddProductForm';
 
 
@@ -11,7 +11,7 @@ import AddProductForm from './AddProductForm';
 
 const App = () => {
   return (
-    <ContextProviderComponent>
+<>
       <Navbar />
 
       <Routes>
@@ -30,7 +30,7 @@ const App = () => {
       </Routes>
 
       <Footer />
-    </ContextProviderComponent>
+</>
 
   )
 }

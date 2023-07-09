@@ -1,55 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { API_CALL } from '../api';
 import axios from 'axios';
+import { BsTrash } from 'react-icons/bs';
 import d from '../../public/d.png';
 import dd2 from '../../public/dd2.png';
-import { BsTrash } from 'react-icons/bs';
 
-const Cart = () => {
+const Cart = ({ productId }) => {
   const images = [d, dd2];
   const randomImage = Math.floor(Math.random() * images.length);
-  const [user, setUser] = useState([]);
-  const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
   const { id } = useParams();
+  const [totalPrice, setTotalPrice] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post(
-          `${API_CALL}/accounts/user/auth/user/details`,
-          null,
-          {
-            headers: {
-              token: `${localStorage.getItem('token')}`,
-            },
-          }
-        );
-        setUser(response.data.data.cart);
-        console.log(response.data.data.cart);
-      } catch (error) {
-        console.error('Error fetching user:', error);
-      }
-    };
-
-    fetchData();
-  }, [id]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `${API_CALL}/accounts/user/singleuser/${id}`
-        );
+        const response = await axios.get(`${API_CALL}/accounts/user/singleuser/${id}`);
         const cart = response.data[0].cart || [];
 
         const itemsWithProductDetails = await Promise.all(
           cart.map(async (itemId) => {
-            const productResponse = await axios.get(
-              `${API_CALL}/products/product/${itemId}`
-            );
-            return productResponse.data.product;
+            const productResponse = await axios.get(`${API_CALL}/products/product/${itemId}`);
+            return { productId: itemId, product: productResponse.data.product };
           })
         );
 
@@ -62,16 +36,51 @@ const Cart = () => {
     fetchData();
   }, [id]);
 
+  useEffect(() => {
+    const calculateTotalPrice = () => {
+      let total = 0;
+      cartItems.forEach((item) => {
+        total += item.product.price * item.quantity;
+      });
+      setTotalPrice(total);
+    };
+
+    calculateTotalPrice();
+  }, [cartItems]);
+
+  const updateQuantity = (productId, newQuantity) => {
+    const updatedItems = cartItems.map((item) => {
+      if (item.productId === productId) {
+        return { ...item, quantity: newQuantity };
+      }
+      return item;
+    });
+
+    setCartItems(updatedItems);
+  };
+
   const removeFromCart = async (productId) => {
     try {
-      const response = await axios.delete(`${API_CALL}/cart/user/${user._id}`, {
-        data: { _id: productId },
-      });
-      console.log(response.data);
-      // Update the cart items state after successful removal
-      setCartItems((prevItems) =>
-        prevItems.filter((item) => item._id !== productId)
-      );
+      const response = await axios.delete(`${API_CALL}/cart/user/${id}/${productId}`);
+      setCartItems((prevItems) => prevItems.filter((item) => item.productId !== productId));
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const placeOrder = async () => {
+    try {
+      for (const item of cartItems) {
+        const { productId, quantity } = item;
+        const response = await axios.post(`${API_CALL}/cart/place_Order/${id}`, {
+          _id: productId,
+          quantity: parseInt(quantity), // Convert quantity to a number
+        });
+        console.log(response.data);
+      }
+      // Clear the cart after placing the order
+      setTotalPrice(0);
+      navigate(`/order_successfull/${id}`); // Redirect to the order placed page
     } catch (error) {
       console.log(error.message);
     }
@@ -81,8 +90,8 @@ const Cart = () => {
   return (
     <>
       {localStorage.getItem('token') ? (
-        <>
-          {cartItems.length > 0 ? (
+        cartItems.length > 0 ? (
+          <>
             <main className="table">
               <section className="table__header">
                 <h3>Cart Items</h3>
@@ -101,40 +110,51 @@ const Cart = () => {
                     </tr>
                   </thead>
                   <tbody>
-                  {cartItems.map((item) => (
-  <tr key={item._id}>
-    <td>{item._id}</td>
-    <td>{item.categoryName}</td>
-    <td>{item.name}</td>
-    <td>
-      <img alt="" src={item.img} />
-    </td>
-    <td>{item.quantity}</td>
-    <td>
-      <strong>₹ {item.price}</strong>
-    </td>
-    <td>
-      <button
-        className="remove-btn"
-        onClick={() => removeFromCart(item._id)}
-      >
-        <BsTrash />
-      </button>
-    </td>
-  </tr>
-))}
-
+                    {cartItems.map((item) => (
+                      <tr key={item.productId}>
+                        <td>{item.product._id}</td>
+                        <td>{item.product.name}</td>
+                        <td>₹ {item.product.price}</td>
+                        <td>
+                          <img src={item.product.img} alt="" />
+                        </td>
+                        <td>
+                          <input
+                            style={{
+                              background: '#000216',
+                              color: '#b99835',
+                              fontSize: '20px',
+                              width: '100px',
+                              padding: '5px',
+                            }}
+                            type="number"
+                            min="1"
+                            max={item.product.quantity}
+                            value={item.quantity}
+                            onChange={(e) => updateQuantity(item.productId, parseInt(e.target.value))}
+                          />
+                        </td>
+                        <td>{item.product.price * item.quantity}</td>
+                        <td>
+                          <BsTrash style={{ cursor: 'pointer' }} onClick={() => removeFromCart(item.productId)} />
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </section>
             </main>
-          ) : (
-            <div className="wishlistContainer">
-              <h3>No Items in the Cart</h3>
-              <img alt="" src={images[randomImage]} />
-            </div>
-          )}
-        </>
+            <h3 style={{ textAlign: 'center' }}>Your Total - ₹{totalPrice}</h3>
+            <button className="btn btn-primary d-block m-auto w-50" onClick={placeOrder}>
+              Place Order Now
+            </button>
+          </>
+        ) : (
+          <div className="wishlistContainer">
+            <h3>No Items in the Cart</h3>
+            <img alt="" src={images[randomImage]} />
+          </div>
+        )
       ) : (
         <div className="container">
           <div className="row justify-content-center mt-5">
@@ -142,9 +162,7 @@ const Cart = () => {
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title fs-4">Please Login First</h5>
-                  <p className="card-text fs-5">
-                    To view your cart, please log in to your account.
-                  </p>
+                  <p className="card-text fs-5">To view your cart, please log in to your account.</p>
                   <Link to="/login" className="btn btn-primary">
                     Login
                   </Link>

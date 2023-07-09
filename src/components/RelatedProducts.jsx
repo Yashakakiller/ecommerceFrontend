@@ -50,7 +50,6 @@ const RelatedProducts = ({ id }) => {
       );
       // console.log(response.data);
 
-      updateSharedData(user.wishlist.length + 1);
     } catch (error) {
       console.log(error.message);
     }

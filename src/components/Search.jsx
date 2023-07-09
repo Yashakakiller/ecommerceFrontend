@@ -4,11 +4,11 @@ import { API_CALL } from '../api';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Categories from './Categories';
 import RandomProducts from './RandomProducts';
-import { MyContext } from '../Context';
+
 
 const Search = () => {
   const [user, setUser] = useState([]);
-  const { sharedData, updateSharedData } = useContext(MyContext);
+
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
@@ -59,7 +59,7 @@ const Search = () => {
         `${API_CALL}/wishlist/user/${user._id}`,
         { _id: productId }
       );
-      updateSharedData(user.wishlist.length + 1);
+      
     } catch (error) {
     //  console.log(error.message);
     }

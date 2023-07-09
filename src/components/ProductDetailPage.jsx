@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { API_CALL } from '../api';
 import RelatedProducts from './RelatedProducts';
+import Cart from './Cart';
 
 const ProductsDetailPage = () => {
   const [quantity, setSelectedQuantity] = useState(1);
-  const [user, setUser] = useState({ wishlist: [] });
+  const [user, setUser] = useState({ wishlist: [], cart: [] });
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [selectedImage, setSelectedImage] = useState(null);
@@ -58,23 +59,24 @@ const ProductsDetailPage = () => {
     }
   };
 
-  const addToCart = async (_id) => {
+  const handleImage = (e, image) => {
+    setSelectedImage(image);
+  };
+
+
+  const addToCart = async (_id, quantity) => {
     try {
+    
       const response = await axios.post(`${API_CALL}/cart/user/${user._id}`, {
         _id,
-        quantity: quantity // Pass the selected quantity
+        quantity: Math.min(quantity, product.quantity),
       });
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error) {
       console.log(error.message);
     }
   };
-  
-  
 
-  const handleImage = (e, image) => {
-    setSelectedImage(image);
-  };
 
   return (
     <>
@@ -119,11 +121,13 @@ const ProductsDetailPage = () => {
               <h3 className="text-danger">Out of Stock!</h3>
             ) : (
               <>
-                <h4>Select Quantity</h4>
+                {/* <h4>Select Quantity</h4>
                 <select
                   className="my-3"
                   value={quantity}
-                  onChange={(e) => setSelectedQuantity(parseInt(e.target.value))}
+                  onChange={(e) =>
+                    setSelectedQuantity(parseInt(e.target.value))
+                  }
                 >
                   {Array.from({ length: product.quantity }, (_, i) => i + 1).map(
                     (value) => (
@@ -132,26 +136,35 @@ const ProductsDetailPage = () => {
                       </option>
                     )
                   )}
-                </select>
+                </select> */}
 
-                <button
-  className="buy-btn mx-2"
-  onClick={() => addToCart(product._id, quantity)}
->
-  Add To Cart
-</button>
-                      {user.wishlist.includes(product._id)?(<><button
-                  className="buy-btn"
-                  disabled
-                >
-                  Already Added To Wishlist
-                </button></>):(<><button
-                  className="buy-btn"
-                  onClick={() => addWishlist(product._id)}
-                >
-                  Add To Wishlist
-                </button></>)}
-                
+                {user.cart.includes(product._id) ? (
+                  <button
+                    disabled
+                    className="buy-btn mx-2"
+                  >
+                    Already Added To Cart
+                  </button>
+                ) : (
+                  <button
+                    className="buy-btn mx-2"
+                    onClick={() => addToCart(product._id, quantity)}
+                  >
+                    Add To Cart
+                  </button>
+                )}
+                {user.wishlist.includes(product._id) ? (
+                  <button className="buy-btn" disabled>
+                    Already Added To Wishlist
+                  </button>
+                ) : (
+                  <button
+                    className="buy-btn"
+                    onClick={() => addWishlist(product._id)}
+                  >
+                    Add To Wishlist
+                  </button>
+                )}
               </>
             )}
             <h4 className="mt-5 mb-5">Product Details</h4>
@@ -160,6 +173,9 @@ const ProductsDetailPage = () => {
         </div>
         <RelatedProducts id={product._id} />
       </section>
+      <div style={{ display: "none" }}>
+        <Cart productId={product._id} />
+      </div>
     </>
   );
 };

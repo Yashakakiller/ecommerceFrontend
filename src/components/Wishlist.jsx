@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router-dom';
 import { API_CALL } from '../api';
 import axios from 'axios';
 import { BsTrash } from 'react-icons/bs';
-import { MyContext } from '../Context';
 import d from '../../public/d.png'
 import dd2 from '../../public/dd2.png'
 
@@ -13,7 +12,7 @@ const Wishlist = () => {
   const randomImage = Math.floor(Math.random() * images.length);
 // console.log(randomImage);
 
-  const { sharedData, updateSharedData } = useContext(MyContext);
+  
   const { id } = useParams();
   const [wishlistItems, setWishlistItems] = useState([]);
   const [user, setUser] = useState([]);
@@ -56,14 +55,14 @@ const Wishlist = () => {
 
         setWishlistItems(itemsWithProductDetails);
 
-        updateSharedData(itemsWithProductDetails.length);
+        
       } catch (error) {
         console.error('Error fetching wishlist:', error);
       }
     };
 
     fetchData();
-  }, [id, updateSharedData]);
+  }, [id]);
 
   const removeWishlist = async (productID) => {
     try {
@@ -76,7 +75,7 @@ const Wishlist = () => {
       );
 
       // Update the shared data
-      updateSharedData(wishlistItems.length - 1);
+      
     } catch (error) {
       console.error('Error removing product from wishlist:', error);
     }

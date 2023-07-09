@@ -4,14 +4,14 @@ import { FaShoppingCart, FaHeart } from 'react-icons/fa';
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {BiUserCircle } from 'react-icons/bi'
 import { API_CALL } from '../api';
-import { MyContext } from '../Context';
+
 import {AiFillCloseCircle} from 'react-icons/ai'
 import axios from 'axios';
 
 const Navbar = () => {
   // const [searchTerm, setSearchTerm] = useState('');
   // const [searchResults, setSearchResults] = useState([]);
-  const { sharedData, updateSharedData } = useContext(MyContext);
+
   const [user, setUser] = useState([]);
 
   useEffect(() => {

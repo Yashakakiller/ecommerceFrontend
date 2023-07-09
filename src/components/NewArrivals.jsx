@@ -22,7 +22,7 @@ console.log(products)
         <p>Get Ready for Trends!</p>
         <div className="new_container">
           {products.map((data) => {
-              return (<div >
+              return (<div key={data._id}>
                
               <div className="new_box">
                 <img src={data.img} alt='dataured image logo' />
