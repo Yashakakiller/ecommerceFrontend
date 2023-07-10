@@ -1,9 +1,11 @@
 import React from 'react';
 import {BsFacebook, BsTwitter, BsInstagram} from 'react-icons/bs'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 
 const Footer = () => {
+  const navigate = useNavigate()
   return (
    <>
     <footer id='footer' className='section-p1'>
