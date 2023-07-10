@@ -45,7 +45,7 @@ const Wishlist = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${API_CALL}/accounts/user/singleuser/${id}`);
-        const wishlist = response.data[0].wishlist || [];
+        const wishlist = response.data.user[0].wishlist || [];
         
         console.log(response.data)
 
