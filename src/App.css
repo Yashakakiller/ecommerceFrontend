@@ -832,6 +832,18 @@ section {
   color: #00bcd4;
 }
 
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.8);
+}
+
+
+
 @media (max-width: 991px) {
   section {
     padding-top: 50px;
@@ -851,6 +863,8 @@ section {
     width: 100%;
   }
   }
+
+
 
 @media (max-width:799px){
   .finalImage{
