@@ -11,7 +11,7 @@ const Footer = () => {
         <img className='flogo' src="/logo-white.png" alt='logo' style={{width:"80px"}}/>
         <h4>Contact</h4>
         <p><strong>Address</strong> 44 Jawahar Colony Tonk Road Jaipur</p>
-        <p><strong>Phone</strong> +91 9928585137</p>
+        <p><strong>Phone</strong> +91 0000000000</p>
         <p><strong>Hours</strong> 24 Hours Available</p>
         <p><strong>Email</strong> yashakakiller@gmail.com</p>
         <div className="follow">
