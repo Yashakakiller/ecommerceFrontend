@@ -8,7 +8,9 @@ const Contact = () => {
     <div class="section-header">
       <div class="container">
         <h2>Contact Us</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis dignissimos eaque doloremque, nulla mollitia facilis temporibus ullam voluptas nostrum consequatur? Fugiat vitae sint quo est eveniet perspiciatis eum asperiores ipsam.</p>
+        <p>Welcome to Meena Cloth House!<br/>
+
+We're delighted that you've chosen to reach out to us. Whether you have a question, a comment, or you simply want to share your shopping experience, our team is here to assist you. </p>
       </div>
     </div>
     
@@ -23,7 +25,7 @@ const Contact = () => {
             
             <div class="contact-info-content">
               <h4>Address</h4>
-              <p>4671 Sugar Camp Road,<br/> Owatonna, Minnesota, <br/>55060</p>
+              <p>44 Jawahar Colony,<br/> Tonk Road Jaipur, <br/>302015</p>
             </div>
           </div>
           
@@ -34,7 +36,7 @@ const Contact = () => {
             
             <div class="contact-info-content">
               <h4>Phone</h4>
-              <p>561-456-2321</p>
+              <p>+91 0000000000</p>
             </div>
           </div>
           
@@ -45,7 +47,7 @@ const Contact = () => {
             
             <div class="contact-info-content">
               <h4>Email</h4>
-             <p>example@email.com</p>
+             <p>yashakakiller@gmail.com</p>
             </div>
           </div>
         </div>
