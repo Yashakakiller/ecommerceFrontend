@@ -945,5 +945,14 @@ table thead tr th:first-child , tbody tr td:first-child  {
 .buy-btn{
   margin: 5px;
 }
-
+.small-img-group {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.small-img-col {
+  flex:0 0  2%;
+  cursor: pointer;
+  /* display: none; */
+}
 }
