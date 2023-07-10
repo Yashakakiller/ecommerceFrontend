@@ -16,7 +16,7 @@ const Wishlist = () => {
   const { id } = useParams();
   const [wishlistItems, setWishlistItems] = useState([]);
   const [user, setUser] = useState([]);
-
+  const [auth ,setAuth] = useState(false)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -29,6 +29,9 @@ const Wishlist = () => {
             },
           }
         );
+        if(response.data.success){
+          setAuth(true)
+        }
         setUser(response.data.data);
       } catch (error) {
         // console.log(error);
@@ -83,7 +86,7 @@ const Wishlist = () => {
 
   return (
     <>
-      {localStorage.getItem('token') ? (
+      {localStorage.getItem('token') && auth ? (
         <>
           {wishlistItems.length == 0 || wishlistItems === null ? (
             <div className="wishlistContainer">

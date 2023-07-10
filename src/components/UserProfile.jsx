@@ -9,14 +9,17 @@ const UserProfile = () => {
   const [images, setImages] = useState([]);
   const [user, setUser] = useState(null);
   const { id } = useParams();
+  const [auth,setAuth] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${API_CALL}/accounts/user/singleuser/${id}`);
-        const userData = response.data[0];
-        console.log(response.data)
-
+        const userData = response.data.user[0];
+        // console.log()
+        if(response.data.success){
+          setAuth(true)
+        }
         setUser(userData);
       } catch (error) {
       //  console.log(error);
@@ -84,7 +87,7 @@ const UserProfile = () => {
 
   return (
     <>
-      {localStorage.getItem('token') ? (
+      {localStorage.getItem('token') && auth ? (
         <>
           <div className="container">
             <div className="row justify-content-center mt-5">
