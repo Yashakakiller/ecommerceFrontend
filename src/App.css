@@ -687,11 +687,12 @@ tbody td.active {
   border-radius: 10px;
 }
 
-section {
+.contact_container {
   position: relative;
   z-index: 3;
   padding-top: 50px;
   padding-bottom: 50px;
+  background-color:rgba(0,0,0,0.8) ;
 }
 
 .container {
@@ -700,7 +701,9 @@ section {
   margin-right: auto;
   padding-left: 20px;
   padding-right: 20px;
+  /* rgba(0,0,0,0.8); */
 }
+
 
 .section-header {
   margin-bottom: 50px;
@@ -832,20 +835,10 @@ section {
   color: #00bcd4;
 }
 
-body::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0,0,0,0.8);
-}
-
 
 
 @media (max-width: 991px) {
-  section {
+  .contact_container {
     padding-top: 50px;
     padding-bottom: 50px;
   }
