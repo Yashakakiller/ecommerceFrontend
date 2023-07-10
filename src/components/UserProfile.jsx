@@ -1,3 +1,5 @@
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
@@ -49,7 +51,12 @@ const UserProfile = () => {
 
   const uploadImage = async () => {
     try {
-      await axios.post(`${API_CALL}/accounts/user`, { img: image, id: id });
+     const response =  await axios.post(`${API_CALL}/accounts/user`, { img: image, id: id });;
+     if(response.data.success){
+      const notify = () => toast(`${response.data.message} \n Please Reload the page`)
+      notify()
+     }
+     
 
     } catch (error) {
     //  console.log('Error uploading image:', error);
@@ -87,6 +94,18 @@ const UserProfile = () => {
 
   return (
     <>
+       <ToastContainer
+position="top-center"
+autoClose={4500}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="colored"
+/>
       {localStorage.getItem('token') && auth ? (
         <>
           <div className="container">
