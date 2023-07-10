@@ -17,3 +17,4 @@ export {default as Search} from './Search.jsx';
 export {default as NewArrivals} from './NewArrivals.jsx'
 export {default as NewsLetter} from './NewsLetter.jsx'
 export {default as AllProducts} from './AllProducts.jsx'
+export {default as Contact} from './Contact.jsx'

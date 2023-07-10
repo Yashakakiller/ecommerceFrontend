@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom';
-import { Navbar, UserProfile, Login, Signup, Products, Footer, ProductDetailPage, Wishlist, Cart, OrderPageSuccessfull, UserOrders, AllProducts } from './components';
+import { Navbar, UserProfile, Login, Signup, Products, Footer, ProductDetailPage, Wishlist, Cart, OrderPageSuccessfull, UserOrders, AllProducts, Contact } from './components';
 import './App.css'
 import Home from './Screen/Home';
 
@@ -26,6 +26,7 @@ const App = () => {
         <Route path="/order_successfull/:id" element={<OrderPageSuccessfull />} />
         <Route path='/orders/user/:id' element={<UserOrders />} />
         <Route path="/allproducts" element={< AllProducts />} />
+        <Route path='/contact' element={<Contact />} />
       
       </Routes>
 
