@@ -31,9 +31,7 @@ const UserOrders = () => {
             return productResponse.data.product;
           })
         );
-          if(response.data.success){
-            setAuth(true)
-          }
+         
         setorderItems(itemsWithProductDetails);
       } catch (error) {
         console.error('Error fetching cart:', error);
@@ -55,7 +53,12 @@ const UserOrders = () => {
             },
           }
         );
+        if(response.data.success){
+          setAuth(true)
+        }
+        // console.log(response.data.data.orders)
         setUser(response.data.data.orders);
+        console.log(user)
       } catch (error) {
         // console.log(error);
       }
@@ -128,7 +131,7 @@ const UserOrders = () => {
                 <div className="card-body">
                   <h5 className="card-title fs-4">Please Login First</h5>
                   <p className="card-text fs-5">
-                    To view your wishlist, please log in to your account.
+                    To view your orders, please log in to your account.
                   </p>
                   <Link to="/login" className="btn btn-primary">
                     Login
