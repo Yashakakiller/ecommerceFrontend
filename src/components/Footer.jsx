@@ -19,9 +19,10 @@ const Footer = () => {
         <div className="follow">
           <h4>Follow Us</h4>
           <div className="icon">
-            <BsFacebook onClick={()=> navigate("https://www.facebook.com/profile.php?id=100091975647443")}/>
-            <BsTwitter onClick={() => navigate("https://twitter.com/yashakakiller")}/>
-            <BsInstagram onClick={() => navigate("https://www.instagram.com/npm_x_yarn/")}/>
+           <Link to="https://www.facebook.com/profile.php?id=100091975647443"><BsFacebook /></Link> 
+           <Link to="https://twitter.com/yashakakiller">  <BsTwitter /></Link>
+          <Link to="https://www.instagram.com/npm_x_yarn/"><BsInstagram /></Link>
+            
           </div>
         </div>
       </div>
