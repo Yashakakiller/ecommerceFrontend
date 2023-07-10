@@ -61,7 +61,9 @@ const ProductsDetailPage = () => {
       const response = await axios.post(`${API_CALL}/wishlist/user/${user._id}`, {
         _id: productId,
       });
-      console.log(response.data);
+      const notify = () => toast(response.data.message)
+      notify()  
+      // console.log(response.data);
     } catch (error) {
       console.log(error.message);
     }
@@ -80,16 +82,11 @@ const ProductsDetailPage = () => {
         quantity: Math.min(quantity, product.quantity),
       });
 const notify = () => toast(response.data.message)
-      notify()
-
-      if(!response.data.success){
-
-        const notify = () => toast(response.data.message)
-              notify()
-        
-      }
+      notify()        
+      
       // console.log(response.data);
     } catch (error) {
+      console.log(error.message)
     }
   };
 
@@ -168,7 +165,8 @@ theme="dark"
 
                 {localStorage.getItem("token") && auth ? (<>{user.cart.includes(product._id) ? (
                   <button
-                    
+                    onClick={() =>{ const notify = () => toast("Already Added To Cart")
+                      notify()}}
                     className="buy-btn mx-2"
                   >
                     Already Added To Cart
@@ -182,7 +180,8 @@ theme="dark"
                   </button>
                 )}
                 {user.wishlist.includes(product._id) ? (
-                  <button className="buy-btn" >
+                  <button className="buy-btn" onClick={() => {const notify = () => toast("Already Added To Wishlist")
+                  notify()}}>
                     Already Added To Wishlist
                   </button>
                 ) : (
