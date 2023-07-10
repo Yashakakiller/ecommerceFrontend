@@ -18,7 +18,8 @@ const Cart = ({ productId }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${API_CALL}/accounts/user/singleuser/${id}`);
-        const cart = response.data[0].cart || [];
+        console.log(response.data)
+        const cart = response.data.user[0].cart || [];
 
         const itemsWithProductDetails = await Promise.all(
           cart.map(async (itemId) => {

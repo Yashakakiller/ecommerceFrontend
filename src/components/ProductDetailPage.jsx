@@ -4,8 +4,12 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { API_CALL } from '../api';
 import RelatedProducts from './RelatedProducts';
 import Cart from './Cart';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const ProductsDetailPage = () => {
+  
   const [quantity, setSelectedQuantity] = useState(1);
   const [user, setUser] = useState({ wishlist: [], cart: [] });
   const { id } = useParams();
@@ -75,15 +79,35 @@ const ProductsDetailPage = () => {
         _id,
         quantity: Math.min(quantity, product.quantity),
       });
+const notify = () => toast(response.data.message)
+      notify()
+
+      if(!response.data.success){
+
+        const notify = () => toast(response.data.message)
+              notify()
+        
+      }
       // console.log(response.data);
     } catch (error) {
-      console.log(error.message);
     }
   };
 
 
   return (
     <>
+    <ToastContainer
+position="top-center"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="dark"
+/>
       <section className="container sproduct mb-5 pt-5">
         <div className="row mt-5">
           <div className="col-lg-5 col-md-12 col-12">
@@ -144,7 +168,7 @@ const ProductsDetailPage = () => {
 
                 {localStorage.getItem("token") && auth ? (<>{user.cart.includes(product._id) ? (
                   <button
-                    disabled
+                    
                     className="buy-btn mx-2"
                   >
                     Already Added To Cart
@@ -158,7 +182,7 @@ const ProductsDetailPage = () => {
                   </button>
                 )}
                 {user.wishlist.includes(product._id) ? (
-                  <button className="buy-btn" disabled>
+                  <button className="buy-btn" >
                     Already Added To Wishlist
                   </button>
                 ) : (
