@@ -13,7 +13,7 @@ const Cart = ({ productId }) => {
   const { id } = useParams();
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
-
+  const [auth,setAuth] = useState(false)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -27,7 +27,10 @@ const Cart = ({ productId }) => {
           })
         );
 
-        setCartItems(itemsWithProductDetails);
+        if(response.data.success){
+          setCartItems(itemsWithProductDetails);
+          setAuth(true)
+        }
       } catch (error) {
         console.error('Error fetching cart:', error);
       }
@@ -89,7 +92,7 @@ const Cart = ({ productId }) => {
 
   return (
     <>
-      {localStorage.getItem('token') ? (
+      {localStorage.getItem('token')  && auth ? (
         cartItems.length > 0 ? (
           <>
             <main className="table">

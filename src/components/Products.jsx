@@ -12,7 +12,7 @@ const Products = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const [user, setUser] = useState([]);
-
+  const [auth , setAuth] = useState(false);
 
   
   useEffect(() => {
@@ -27,6 +27,9 @@ const Products = () => {
             },
           }
         );
+        if(response.data.success){
+          setAuth(true)
+        }
         setUser(response.data.data);
       } catch (error) {
       //  console.log(error);
@@ -128,14 +131,14 @@ const Products = () => {
                           </>
                         )}
 
-                        <button
+                       {localStorage.getItem("token") && auth ? (<> <button
                           className="w-50 btn btn-primary d-block my-3 mx-auto"
                           onClick={() => {
                             addWishlist(product._id);
                           }}
                         >
                           Add to Wishlist
-                        </button>
+                        </button></>):(<></>)}
                         <Link
                           to={`/product/${product._id}`}
                           className="w-100 my-2 btn btn-secondary"

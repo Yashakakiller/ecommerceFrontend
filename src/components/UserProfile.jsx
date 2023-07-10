@@ -15,6 +15,7 @@ const UserProfile = () => {
       try {
         const response = await axios.get(`${API_CALL}/accounts/user/singleuser/${id}`);
         const userData = response.data[0];
+        console.log(response.data)
 
         setUser(userData);
       } catch (error) {

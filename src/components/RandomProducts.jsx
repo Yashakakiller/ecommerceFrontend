@@ -6,6 +6,7 @@ import { FaShoppingCart, FaHeart } from 'react-icons/fa';
 
 const RandomProducts = () => {
   const [randomProducts, setRandomProducts] = useState([]);
+  const [auth,setAuth] = useState(false);
   const [user, setUser] = useState([]);
 
   useEffect(() => {
@@ -20,7 +21,10 @@ const RandomProducts = () => {
             },
           }
         );
-        setUser(response.data.data);
+        if(response.data.success){
+          setUser(response.data.data);
+          setAuth(true)
+        }
       } catch (error) {
         // console.log(error);
       }
@@ -68,7 +72,7 @@ const RandomProducts = () => {
                 <h5>{feat.name}</h5>
                 <h4>₹ {feat.price}</h4>
               </div>
-              <Link to="/" className='featcart'><FaShoppingCart onClick={() => addToCart(feat._id, 1)} /></Link>
+              {auth && <Link to="/" className='featcart'><FaShoppingCart onClick={() => addToCart(feat._id, 1)} /></Link>}
             </div>
           ))}
         </div>

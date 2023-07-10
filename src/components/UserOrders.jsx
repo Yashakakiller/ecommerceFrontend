@@ -10,6 +10,7 @@ const UserOrders = () => {
   const [orderItems, setorderItems] = useState([]);
   const [user, setUser] = useState([]);
   const navigate = useNavigate()
+  const [auth , setAuth] = useState(false)
 
   const images = [d, dd2];
   const randomImage = Math.floor(Math.random() * images.length);
@@ -30,7 +31,9 @@ const UserOrders = () => {
             return productResponse.data.product;
           })
         );
-
+          if(response.data.success){
+            setAuth(true)
+          }
         setorderItems(itemsWithProductDetails);
       } catch (error) {
         console.error('Error fetching cart:', error);
@@ -63,7 +66,7 @@ const UserOrders = () => {
 
   return (
     <>
-      {localStorage.getItem('token') ? (
+      {localStorage.getItem('token')  && auth ? (
         <>
           {orderItems.length == 0 || orderItems === null ? (
             <div className="wishlistContainer">

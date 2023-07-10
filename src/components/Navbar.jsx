@@ -26,8 +26,10 @@ const Navbar = () => {
             },
           }
         );
-        console.log(response.data.status)
-        setUser(response.data.data);
+       if(response.data.success){
+         setUser(response.data.data);
+         setAuth(true)
+       }
       } catch (error) {
       //  console.log(error);
       }
@@ -91,7 +93,7 @@ const Navbar = () => {
                     <li><Link to="/contact">Contact</Link></li>
 
                     <AiFillCloseCircle id='close' style={{display:"none"}}/>
-                    {localStorage.getItem("token")  ? (<>
+                    {localStorage.getItem("token") && auth ? (<>
 
                       <li><Link to={`/cart/user/${user._id}`}><FaShoppingCart /></Link></li>
 

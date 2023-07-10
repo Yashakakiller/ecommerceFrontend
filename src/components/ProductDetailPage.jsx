@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { API_CALL } from '../api';
 import RelatedProducts from './RelatedProducts';
 import Cart from './Cart';
@@ -11,7 +11,8 @@ const ProductsDetailPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [selectedImage, setSelectedImage] = useState(null);
-
+  const [auth , setAuth] = useState(false);
+  const navigate = useNavigate()
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,6 +25,9 @@ const ProductsDetailPage = () => {
             },
           }
         );
+        if(response.data.success){
+          setAuth(true)
+        }
         setUser(response.data.data);
       } catch (error) {
         console.log(error);
@@ -138,7 +142,7 @@ const ProductsDetailPage = () => {
                   )}
                 </select> */}
 
-                {user.cart.includes(product._id) ? (
+                {localStorage.getItem("token") && auth ? (<>{user.cart.includes(product._id) ? (
                   <button
                     disabled
                     className="buy-btn mx-2"
@@ -164,7 +168,9 @@ const ProductsDetailPage = () => {
                   >
                     Add To Wishlist
                   </button>
-                )}
+                )}</>) : (<><button className="buy-btn" onClick={() => {navigate("/login")}}>
+                Please Login First to Continue
+              </button></>)}
               </>
             )}
             <h4 className="mt-5 mb-5">Product Details</h4>
