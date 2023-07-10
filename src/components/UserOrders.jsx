@@ -21,7 +21,8 @@ const UserOrders = () => {
         const response = await axios.get(
           `${API_CALL}/accounts/user/singleuser/${id}`
         );
-        const cart = response.data[0].orders || [];
+        const cart = response.data.user[0].orders || [];
+        console.log(response.data , "bye")
 
         const itemsWithProductDetails = await Promise.all(
           cart.map(async (itemId) => {
@@ -53,11 +54,12 @@ const UserOrders = () => {
             },
           }
         );
+        console.log(response , "hello")
         if(response.data.success){
           setAuth(true)
         }
         // console.log(response.data.data.orders)
-        setUser(response.data.data.orders);
+        setUser(response.data.user.orders);
         console.log(user)
       } catch (error) {
         // console.log(error);
