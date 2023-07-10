@@ -141,9 +141,7 @@ theme="colored"
                           ) : (
                             <>
                           
-                              <img src={images} alt='' style={{
-                                width:"400px" , borderRadius:"10px"
-                              }}/>
+                              <img className='finalImage' src={images} alt='' />
                             </>
                           )}
                         </div>
@@ -187,7 +185,7 @@ theme="colored"
             </div>
           </div>
 
-          <div className="container" style={{ display: 'flex', justifyContent: 'center' }}>
+          <div className="container" style={{ display: 'flex',flexWrap:"wrap", justifyContent: 'center' }}>
             <Link className="btn btn-success m-2 text-light" to="/">
               Start Your Shopping
             </Link>

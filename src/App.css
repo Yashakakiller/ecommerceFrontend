@@ -667,7 +667,32 @@ tbody td.active {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.finalImage{
+  width: 400px;
+  border-radius: 10px;
+}
+
+
+
 @media (max-width:799px){
+  .finalImage{
+    width: 200px;
+  }
   #navbar{
     display: flex;
     flex-direction: column;
