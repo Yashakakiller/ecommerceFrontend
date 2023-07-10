@@ -747,4 +747,8 @@ table thead tr th:first-child , tbody tr td:first-child  {
   display: none;
 }
 
+.buy-btn{
+  margin: 5px;
+}
+
 }
