@@ -13,7 +13,7 @@ const Navbar = () => {
   // const [searchResults, setSearchResults] = useState([]);
 
   const [user, setUser] = useState([]);
-
+  const [auth , setAuth] = useState(false)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -26,6 +26,7 @@ const Navbar = () => {
             },
           }
         );
+        console.log(response.data.status)
         setUser(response.data.data);
       } catch (error) {
       //  console.log(error);
@@ -72,73 +73,14 @@ const Navbar = () => {
 
 
   return (
-    // <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
-    //   <div className="container-fluid">
-    //     <Link className="navbar-brand" to="/">
-    //       MEENA CLOTH HOUSE
-    //     </Link>
-    //     <button
-    //       className="navbar-toggler"
-    //       type="button"
-    //       data-bs-toggle="collapse"
-    //       data-bs-target="#navbarSupportedContent"
-    //       aria-controls="navbarSupportedContent"
-    //       aria-expanded="false"
-    //       aria-label="Toggle navigation"
-    //     >
-    //       <span className="navbar-toggler-icon"></span>
-    //     </button>
-    //     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-    //       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-    //         <li className="nav-item">
-    //           <Link className="btn btn-secondary" aria-current="page" to="/">
-    //             Home
-    //           </Link>
-    //         </li>
-    //       </ul>
-    //       {/* <div className="d-flex">
+  
+    <>
+    {/* <div className="d-flex">
     //         <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
     //         <button className="btn btn-primary mx-2" onClick={handleSearch}>
     //           Search
     //         </button>
     //       </div> */}
-    //       {localStorage.getItem('token') ? (
-    //         <>
-    //           <div className="d-flex">
-    //             <Link className="btn btn-light m-2" to={`/cart/user/${user._id}`}>
-    //               <FaShoppingCart className="me-1" />
-    //               Cart
-    //             </Link>
-    //             <Link className="btn btn-light m-2" to={`/wishlist/user/${user._id}`}>
-    //               <FaHeart className="me-1" />
-    //               Wishlist {sharedData}
-    //             </Link>
-    //           </div>
-    //           <Link className="btn btn-danger m-2 text-light" onClick={logoutHandler}>
-    //             Logout
-    //           </Link>
-    //           <Link className="btn btn-success m-2" to={`/accounts/profile/user/${user._id}`}>
-    //             Welcome
-    //           </Link>
-    //         </>
-    //       ) : (
-    //         <>
-    //           <Link className="btn btn-warning m-2 text-light" to="/login">
-    //             Login
-    //           </Link>
-    //           <Link className="btn btn-success m-2" to="/signup">
-    //             Sign Up
-    //           </Link>
-    //         </>
-    //       )}
-    //     </div>
-    //   </div>
-      
-    // </nav>
-
-
-    <>
-    
         <section id='header'>
             <Link to="/"><img  src="/logo-white.png" alt="logo" className='logo'/></Link>
 
@@ -149,7 +91,7 @@ const Navbar = () => {
                     <li><Link to="/contact">Contact</Link></li>
 
                     <AiFillCloseCircle id='close' style={{display:"none"}}/>
-                    {localStorage.getItem("token") ? (<>
+                    {localStorage.getItem("token")  ? (<>
 
                       <li><Link to={`/cart/user/${user._id}`}><FaShoppingCart /></Link></li>
 
