@@ -37,6 +37,7 @@ const productOpen = async(pId) => {
                 <img src={data.img} alt='dataured image logo' onClick={() => productOpen(data._id)}/>
                 <div className="desc">
                   <h5>{data.name}</h5>
+                  <h5>Quantity Available - {data.quantity}</h5>
                 </div>
                 {/* <img src="/new_arrival.png" alt="" className="newAlogo" /> */}
               </div>

@@ -14,16 +14,19 @@ const Cart = ({ productId }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
   const [auth,setAuth] = useState(false)
+  console.log(cartItems)
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${API_CALL}/accounts/user/singleuser/${id}`);
         console.log(response.data)
         const cart = response.data.user[0].cart || [];
+        console.table(cart)
 
         const itemsWithProductDetails = await Promise.all(
           cart.map(async (itemId) => {
             const productResponse = await axios.get(`${API_CALL}/products/product/${itemId}`);
+            console.table(productResponse.data)
             return { productId: itemId, product: productResponse.data.product };
           })
         );
