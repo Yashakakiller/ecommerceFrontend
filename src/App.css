@@ -278,19 +278,7 @@ p{
   transition: 0.3s ease;
   /* position: relative; */
 }
-#newProducts .new_box {
- /*  width: 20%;
-  max-height: 600px;
-  min-width: 200px;
-  padding: 10px 12px;
-  border: 1px solid #cce7d0;
-  border-radius: 25px;
-  cursor: pointer;
-  box-shadow:20px 20px 30px rgba(0, 0, 0, 0.02) ;
-  margin: 15px 5px;
-  transition: 0.3s ease;
-  position: relative; */
-}
+
 #newProducts .new_box img{
   /* width: 70%; */
   max-height: 190px;
