@@ -101,7 +101,7 @@ const Products = () => {
                       className="card"
                       style={{
                         width: '20rem',
-                        maxHeight: '760px',
+                        maxHeight: '800px',
                         boxShadow: '3px 3px 10px black',
                       }}
                     >
@@ -109,10 +109,10 @@ const Products = () => {
                         src={product.img}
                         className="card-img-top"
                         alt="Product"
-                        style={{ height: '420px', objectFit: 'fill' }}
+                        style={{ maxHeight: '350px', objectFit: 'fill' }}
                       />
                       <div className="card-body">
-                        <h5 className="card-title">{product.name}</h5>
+                        <h5 className="card-title" style={{fontSize:"15px"}}>{product.name}</h5>
                         <p className="card-price">
                           ₹ <b>{product.price}</b>
                         </p>
