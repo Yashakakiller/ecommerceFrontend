@@ -201,9 +201,9 @@ p{
   padding-top: 20px;
 }
 #featuredProducts .feat_box {
-  width: 23%;
-  max-height: 700px;
-  min-width: 250px;
+  width: 30%;
+  height: 500px;
+  max-width: 250px;
   padding: 10px 12px;
   border: 1px solid #cce7d0;
   border-radius: 25px;
@@ -213,8 +213,9 @@ p{
   transition: 0.2s ease;
 }
 #featuredProducts .feat_box img{
-  width: 100%;
-  max-height: 350px;
+  width: 190px;
+  max-height: 290px;
+
   border-radius: 20px;
 }
 #featuredProducts .feat_box:hover{
@@ -264,7 +265,7 @@ p{
 }
 .new_box_parent{
   width: 30%;
-  max-height: 600px;
+  height: 300px;
   min-width: 200px;
   padding: 10px 12px;
   border: 1px solid #cce7d0;
@@ -290,10 +291,10 @@ p{
 }
 #newProducts .new_box img{
   /* width: 70%; */
-  max-height: 300px;
+  max-height: 190px;
   border-radius: 20px;
 }
-#newProducts .new_box:hover{
+#newProducts .new_box_parent:hover{
   box-shadow:20px 20px 30px rgba(54, 51, 51, 0.09) ;
   border: 2px solid #b99835;
   border-radius: 25px;
@@ -701,25 +702,25 @@ tbody td.active {
   border-radius: 10px;
 }
 
-/* .contact_container {
+.contact_container {
   position: relative;
   z-index: 3;
   padding-top: 50px;
   padding-bottom: 50px;
   background-color:rgba(0,0,0,0.8) ;
-} */
+} 
 
-/* .container {
+.container {
   max-width: 1080px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 20px;
   padding-right: 20px;
-} */
-/* rgba(0,0,0,0.8); */
+} 
 
 
-/* .section-header {
+
+ .section-header {
   margin-bottom: 50px;
   text-align: center;
 }
@@ -869,7 +870,7 @@ tbody td.active {
   .contact-form {
     width: 100%;
   }
-  } */
+  } 
 
 
 
