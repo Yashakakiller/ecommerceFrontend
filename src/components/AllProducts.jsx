@@ -51,6 +51,7 @@ const AllProducts = () => {
                 <div className="desc">
                   <h5>{product.name}</h5>
                   <h4>₹ {product.price}</h4>
+                  <h4>₹ {product.quantity}</h4>
                 </div>
                 
                 <Link  to={`/product/${product._id}`}>View Product</Link>
