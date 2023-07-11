@@ -31,7 +31,7 @@ const productOpen = async(pId) => {
         <p>Get Ready for Trends!</p>
         <div className="new_container">
           {products.map((data) => {
-              return (<div key={data._id}>
+              return (<div className='new_box_parent' key={data._id}>
                
               <div className="new_box">
                 <img src={data.img} alt='dataured image logo' onClick={() => productOpen(data._id)}/>
