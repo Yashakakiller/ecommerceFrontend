@@ -5,6 +5,8 @@ import axios from 'axios';
 import { BsTrash } from 'react-icons/bs';
 import d from '../../public/d.png';
 import dd2 from '../../public/dd2.png';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Cart = ({ productId }) => {
   const images = [d, dd2];
@@ -15,18 +17,18 @@ const Cart = ({ productId }) => {
   const navigate = useNavigate();
   const [auth,setAuth] = useState(false)
   console.log(cartItems)
+  
+  const notify = (message) => toast(message);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${API_CALL}/accounts/user/singleuser/${id}`);
-        console.log(response.data)
         const cart = response.data.user[0].cart || [];
-        console.table(cart)
 
         const itemsWithProductDetails = await Promise.all(
           cart.map(async (itemId) => {
             const productResponse = await axios.get(`${API_CALL}/products/product/${itemId}`);
-            console.table(productResponse.data)
             return { productId: itemId, product: productResponse.data.product };
           })
         );
@@ -83,11 +85,20 @@ const Cart = ({ productId }) => {
           _id: productId,
           quantity: parseInt(quantity), // Convert quantity to a number
         });
-        console.log(response.data);
+        console.log(response.status);
+        if(!response.data.success){
+          notify(response.data.message);
+        }
+        else{
+
+        setTotalPrice(0);
+        navigate(`/order_successfull/${id}`); // Redirect to the order placed page
+      }
+
       }
       // Clear the cart after placing the order
-      setTotalPrice(0);
-      navigate(`/order_successfull/${id}`); // Redirect to the order placed page
+      
+      
     } catch (error) {
       console.log(error.message);
     }
@@ -99,6 +110,18 @@ const Cart = ({ productId }) => {
       {localStorage.getItem('token')  && auth ? (
         cartItems.length > 0 ? (
           <>
+        <ToastContainer
+position="top-center"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
             <main className="table">
               <section className="table__header">
                 <h3>Cart Items</h3>
