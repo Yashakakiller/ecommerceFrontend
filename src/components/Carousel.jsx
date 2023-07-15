@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import i2 from '../../public/shoes ecommerce.jpg';
-import i3 from '../../public/b2.jpg';
-import i4 from '../../public/b3.jpg';
-import i5 from '../../public/b4.jpg';
+import axios from 'axios';
 
 export default function Carousel() {
-  const bannerImages = [ i2,i3,i4,i5]; 
-
+  const [bannerImages, setBannerImages] = useState([]);
   const [currentImage, setCurrentImage] = useState(null);
 
   useEffect(() => {
@@ -16,13 +12,27 @@ export default function Carousel() {
       index = (index + 1) % bannerImages.length;
     }, 3000);
 
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval);
+  }, [bannerImages]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/banner');
+        const images = response.data.bannerImages.map((banner) => banner.bannerImage);
+        setBannerImages(images);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
     <>
       <section id="hero">
-        <img src={currentImage} alt="Banner" disabled/>
+        {currentImage && <img src={currentImage} alt="Banner" disabled />}
       </section>
     </>
   );
