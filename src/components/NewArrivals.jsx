@@ -36,7 +36,7 @@ const productOpen = async(pId) => {
               <div className="new_box">
                 <img src={data.img} alt='dataured image logo' onClick={() => productOpen(data._id)}/>
                 <div className="desc">
-                  {data.name.length > 90 ? (<><h5>{data.name.slice(0 , 90)}...</h5></>) : (<><h5>{data.name}</h5></>)}
+                  {data.name.length > 90 ? (<><h5>{data.name.slice(0 , 85)}...</h5></>) : (<><h5>{data.name}</h5></>)}
                   {data.quantity == 0 ? (<><h5 className='text-danger'>OOPS! Out of Stock</h5></>) : (<><h5>Quantity Available - {data.quantity}</h5></>)}
                 </div>
                 {/* <img src="/new_arrival.png" alt="" className="newAlogo" /> */}

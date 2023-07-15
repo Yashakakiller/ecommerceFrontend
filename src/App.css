@@ -268,7 +268,6 @@ p{
 .new_box_parent{
   width: 30%;
   height: 300px;
-  min-width: 200px;
   padding: 10px 12px;
   border: 1px solid #cce7d0;
   border-radius: 25px;
@@ -284,11 +283,7 @@ p{
   max-height: 190px;
   border-radius: 20px;
 }
-#newProducts .new_box_parent:hover{
-  box-shadow:20px 20px 30px rgba(54, 51, 51, 0.09) ;
-  border: 2px solid #b99835;
-  border-radius: 25px;
-}
+
 #newProducts .new_box .desc{
   text-align: center;
   padding: 10px 0;
