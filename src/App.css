@@ -1067,15 +1067,15 @@ table thead tr th:first-child , tbody tr td:first-child  {
 
 @media (max-width:539px){
   #newProducts .new_box {
-    width: 120px;
+    width: 110px;
     box-shadow: 2px 2px 10px rgba(122,122,122,0.9);
     cursor: pointer;
     border-radius: 20px;
     padding: 9px;
     margin: 3px;
     /* height: 310px; */
-    height: 180px;
-  }
+    height: 198px;
+}
   #newProducts .new_box img {
     /* width: ; */
     height: 80px;
