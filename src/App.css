@@ -265,7 +265,7 @@ p{
   justify-content: center;
   padding-top: 20px;
 }
-.new_box_parent{
+/* .new_box_parent{
   width: 30%;
   height: 300px;
   padding: 10px 12px;
@@ -275,12 +275,23 @@ p{
   box-shadow:20px 20px 30px rgba(0, 0, 0, 0.02) ;
   margin: 15px 5px;
   transition: 0.3s ease;
-  /* position: relative; */
+  
+} */
+
+#newProducts .new_box{
+  width: 300px;
+  box-shadow: 2px 2px 10px rgba(122,122,122,0.9);
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 9px;
+  margin: 9px;
+  height: 310px;
+  height: 360px;
 }
 
 #newProducts .new_box img{
   /* width: 70%; */
-  max-height: 190px;
+  height: 200px;
   border-radius: 20px;
 }
 
@@ -294,12 +305,7 @@ p{
   font-size: 14px;
   margin: 3px;
 }
-#newProducts .new_box .desc h4{
-  padding-top: 7px;
-  color: #b99835;
-  font-weight: 700;
-  font-size: 15px;
-}
+
 
 
 
@@ -1032,4 +1038,6 @@ table thead tr th:first-child , tbody tr td:first-child  {
   cursor: pointer;
   /* display: none; */
 }
+
+
 }

@@ -31,18 +31,18 @@ const productOpen = async(pId) => {
         <p>Get Ready for Trends!</p>
         <div className="new_container">
           {products.map((data) => {
-              return (<div className='new_box_parent' key={data._id}>
-               
-              <div className="new_box">
+              return (<>
+                    <div className="new_box">
+
                 <img src={data.img} alt='dataured image logo' onClick={() => productOpen(data._id)}/>
                 <div className="desc">
                   {data.name.length > 90 ? (<><h5>{data.name.slice(0 , 85)}...</h5></>) : (<><h5>{data.name}</h5></>)}
                   {data.quantity == 0 ? (<><h5 className='text-danger'>OOPS! Out of Stock</h5></>) : (<><h5>Quantity Available - {data.quantity}</h5></>)}
+                    </div>
                 </div>
                 {/* <img src="/new_arrival.png" alt="" className="newAlogo" /> */}
-              </div>
              
-            </div>)
+            </>)
           })}
         </div>
       </section>
