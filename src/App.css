@@ -197,24 +197,24 @@ p{
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   padding-top: 20px;
 }
 #featuredProducts .feat_box {
-  width: 30%;
-  height: 500px;
-  max-width: 250px;
-  padding: 10px 12px;
+  width:270px;
+  height: 460px;
+  /* max-width: 290px; */
+  /* padding: 10px 12px; */
   border: 1px solid #cce7d0;
   border-radius: 25px;
   cursor: pointer;
   box-shadow:20px 20px 30px rgba(0, 0, 0, 0.02) ;
-  margin: 15px 0;
+  margin: 15px;
   transition: 0.2s ease;
 }
 #featuredProducts .feat_box img{
   width: 190px;
-  max-height: 290px;
+  height: 290px;
 
   border-radius: 20px;
 }
