@@ -1064,3 +1064,30 @@ table thead tr th:first-child , tbody tr td:first-child  {
   display: none;
 }
 }
+
+@media (max-width:539px){
+  #newProducts .new_box {
+    width: 120px;
+    box-shadow: 2px 2px 10px rgba(122,122,122,0.9);
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 9px;
+    margin: 3px;
+    /* height: 310px; */
+    height: 180px;
+  }
+  #newProducts .new_box img {
+    /* width: ; */
+    height: 80px;
+    /* border-radius: 20px; */
+  }
+  #newProducts .new_box .desc h5 {
+    padding-top: 7px;
+    color: #1a1a1a;
+    font-size: 9px;
+    margin: 3px;
+  }
+  #newProducts .new_box .desc h5:nth-child(2) {
+    display: none;
+  }
+}
