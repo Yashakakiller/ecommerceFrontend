@@ -26,7 +26,7 @@ const productOpen = async(pId) => {
 
   return (
     <>
-       <section id="newProducts" className='section-p1'>
+       <section id="newProducts" >
       <h2>New Arrivals</h2>
       <p>Get Ready for Trends!</p>
       <div className="new_container">

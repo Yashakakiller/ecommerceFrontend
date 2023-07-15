@@ -262,7 +262,7 @@ p{
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   padding-top: 20px;
 }
 /* .new_box_parent{
