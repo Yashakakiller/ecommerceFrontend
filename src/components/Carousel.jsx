@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_CALL } from '../api';
 
 export default function Carousel() {
   const [bannerImages, setBannerImages] = useState([]);
