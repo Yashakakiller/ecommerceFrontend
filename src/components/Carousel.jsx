@@ -18,7 +18,7 @@ export default function Carousel() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/banner');
+        const response = await axios.get(`${API_CALL}/banner`);
         const images = response.data.bannerImages.map((banner) => banner.bannerImage);
         setBannerImages(images);
       } catch (error) {
