@@ -303,6 +303,7 @@ p{
 
 
 
+
 #relatedProducts{
   margin-top: 5rem;
   text-align: center;
@@ -314,8 +315,8 @@ p{
   justify-content: space-evenly;
   padding-top: 20px;
 }
-.related_box_parent{
-  width: 20%;
+.related_box{
+  width: 200px;
   position: relative;
   height: 300px;
   padding: 10px 12px;
@@ -325,7 +326,7 @@ p{
   box-shadow:20px 20px 30px rgba(0, 0, 0, 0.02) ;
   margin: 15px 5px;
   transition: 0.3s ease;
-  /* position: relative; */
+
 }
 #relatedProducts .related_box .viewBtn {
   text-decoration: none;
@@ -334,26 +335,26 @@ p{
   bottom:15px;
   left: 5px;
   right: 5px;
-  /* display: block; */
-  /* margin: 0 auto; */
   background-color: #b99835;
   border-radius: 20px;
   padding: 9px;
   color: #cce7d0;
 }
 #relatedProducts .related_box img{
-  /* width: 70%; */
   max-height: 190px;
   border-radius: 20px;
 }
 #relatedProducts .related_box_parent:hover{
   box-shadow:20px 20px 30px rgba(54, 51, 51, 0.09) ;
-  /* border: 2px solid #b99835; */
   border-radius: 25px;
 }
 #relatedProducts .related_box .desc p{
   text-align: center; 
 }
+
+
+
+
 
 
 
