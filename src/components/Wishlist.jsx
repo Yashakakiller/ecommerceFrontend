@@ -86,9 +86,9 @@ const Wishlist = () => {
 
   return (
     <>
-      {localStorage.getItem('token') && auth ? (
+      {localStorage.getItem('token')  ? (
         <>
-          {wishlistItems.length == 0 || wishlistItems === null ? (
+        {auth ? (<> {wishlistItems.length == 0 || wishlistItems === null ? (
             <div className="wishlistContainer">
               <h3>No Items in the Wishlist</h3>
               <img alt="" src={images[randomImage]} />
@@ -142,7 +142,9 @@ const Wishlist = () => {
     </section>
   </main>
             </>
-          )}
+          )}</>) : (<> <div className="lds-hourglass center "></div>
+          <h3 className='verifyh3'>Please Wait we are verifying your Authentication</h3></>)}
+         
         </>
       ) : (
         <>

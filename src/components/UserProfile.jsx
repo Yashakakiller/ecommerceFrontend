@@ -106,9 +106,12 @@ draggable
 pauseOnHover
 theme="colored"
 />
-      {localStorage.getItem('token') && auth ? (
-        <>
-          <div className="container">
+      {localStorage.getItem('token')  ? (
+        <>  
+        {!auth ? (<>
+        <div className="lds-hourglass center "></div>
+        <h3 className='verifyh3'>Please Wait we are verifying your Authentication</h3>
+        </>) : (<><div className="container">
             <div className="row justify-content-center mt-5">
               <div className="col-lg-8">
                 <div className="usercard useranimated fadeIn">
@@ -195,7 +198,8 @@ theme="colored"
             <Link className="btn btn-primary m-2 text-light" to={`/orders/user/${id}`}>
               Your Orders
             </Link>
-          </div>
+          </div></>)}
+          
         </>
       ) : (
         <>
