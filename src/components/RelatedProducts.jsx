@@ -126,7 +126,7 @@ const RelatedProducts = ({ id }) => {
     // </>
 
     <>
-    <section id="relatedProducts" className='section-p1'>
+    <section id="relatedProducts" className='section'>
     <h2>Related Products</h2>
     <div className="related_container">
       {relatedProducts.map((data) => {
@@ -135,7 +135,7 @@ const RelatedProducts = ({ id }) => {
           <div className="related_box">
             <img src={data.img} alt='dataured image logo' onClick={() => productOpen(data._id)}/>
             <div className="desc">
-             {data.quantity == 0 || data.quantity == null ? (
+             {/* {data.quantity == 0 || data.quantity == null ? (
                     <p className='text-danger'>
                     Out of Stock .. Will Back Soon !!!
                   </p>
@@ -147,7 +147,7 @@ const RelatedProducts = ({ id }) => {
                       </p>
                     ) : null}
                   </>
-                )}
+                )} */}
 
                 
 
