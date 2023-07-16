@@ -387,8 +387,8 @@ p{
   left: 50%;
   margin:0 auto;
   box-sizing: border-box;
-  border: 32px solid #09ff00;
-  border-color: #e60000 transparent #f30000 transparent;
+  border: 32px solid #393939;
+  border-color: #000216 transparent #b99835 transparent;
   animation: lds-hourglass 1.9s infinite;
 }
 @keyframes lds-hourglass {
