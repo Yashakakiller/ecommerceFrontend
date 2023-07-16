@@ -127,8 +127,7 @@ const RelatedProducts = ({ id }) => {
 
     <>
     <section id="relatedProducts" className='section-p1'>
-    <h2>New Arrivals</h2>
-    <p>Get Ready for Trends!</p>
+    <h2>Related Products</h2>
     <div className="related_container">
       {relatedProducts.map((data) => {
           return (<div className='related_box_parent' key={data._id}>
