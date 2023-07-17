@@ -10,7 +10,7 @@ const NewsLetter = () => {
     })
 
 
-    const handleSubmit = async() => {
+    const handleSubmit = async(e) => {
         e.preventDefault()
         const data = await axios.post(`${API_CALL}/contact/specificProduct`,formData)
         setFormData({
