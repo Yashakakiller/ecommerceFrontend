@@ -1,42 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { API_CALL } from '../api';
-import { makeStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import EmailIcon from '@material-ui/icons/Email';
-import PhoneIcon from '@material-ui/icons/Phone';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    backgroundColor: '#f5f5f5',
-    padding: theme.spacing(4),
-    borderRadius: theme.spacing(2),
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-    maxWidth: 400,
-    margin: '0 auto',
-  },
-  avatar: {
-    width: theme.spacing(10),
-    height: theme.spacing(10),
-    marginBottom: theme.spacing(2),
-  },
-  icon: {
-    marginRight: theme.spacing(1),
-  },
-  cardBody: {
-    backgroundColor: '#000000',
-  },
-}));
-
 const UserProfile = () => {
-  const classes = useStyles();
   const navigate = useNavigate();
   const [image, setImage] = useState('');
   const [images, setImages] = useState([]);
@@ -140,78 +109,71 @@ const UserProfile = () => {
               <div className="container">
                 <div className="row justify-content-center mt-5">
                   <div className="col-lg-8">
-                    <div className={classes.container}>
-                      <div
-                        className="card-header"
-                        style={{
-                          backgroundColor: '#f44336',
-                          color: '#ffffff',
-                          borderRadius: '20px',
-                        }}
-                      >
-                        
+                    <div className="usercard">
+                      <div className="card-header bg-danger text-white" style={{ borderRadius: '20px' }}>
                         <h3 className="text-center p-3 fs-2">User Profile</h3>
                       </div>
-                      <div className={`${classes.cardBody} card-body p-4`}>
+                      <div className="card-body p-4" style={{ background: '#000000' }}>
                         {user ? (
                           <>
-                            <Grid container direction="column" alignItems="center" spacing={2}>
-                              <Grid item>
-                                {!user.img ? (
-                                  <>
-                                    <h3 className="text-light">You have not set a profile icon yet!</h3>
-                                    <input
-                                      accept="image/*"
-                                      type="file"
-                                      onChange={convert}
-                                      id="accept_image"
-                                      onClick={hideImage}
-                                      style={{ display: 'none' }}
-                                    />
-                                    {image && (
-                                      <>
-                                        <br />
-                                        <img width={200} src={image} alt="User" />
-                                      </>
-                                    )}
-                                    <button
-                                      className="btn btn-danger p-2"
-                                      onClick={uploadImage}
-                                      style={{ marginTop: '10px' }}
-                                    >
-                                      Set Profile Image
-                                    </button>
-                                  </>
-                                ) : (
-                                  <>
-                                    <Avatar className={classes.avatar} alt={user.name} src={user.img} />
-                                  </>
-                                )}
-                              </Grid>
-                              <Grid item>
-                                <Typography variant="h6" style={{ color: '#ffffff' }}>
-                                  {`${user.firstName} ${user.lastName}`}
-                                </Typography>
-                              </Grid>
-                              <Grid item container alignItems="center">
-                                <EmailIcon className={classes.icon} style={{ color: '#ffffff' }} />
-                                <Typography style={{ color: '#ffffff' }}>{user.email}</Typography>
-                              </Grid>
-                              <Grid item container alignItems="center">
-                                <PhoneIcon className={classes.icon} style={{ color: '#ffffff' }} />
-                                <Typography style={{ color: '#ffffff' }}>{user.phone}</Typography>
-                              </Grid>
-                              <Grid item container alignItems="center">
-                                <LocationOnIcon className={classes.icon} style={{ color: '#ffffff' }} />
-                                <Typography style={{ color: '#ffffff' }}>{user.address}</Typography>
-                              </Grid>
-                              <Grid item container alignItems="center">
-                                <CalendarTodayIcon className={classes.icon} style={{ color: '#ffffff' }} />
-                                <Typography style={{ color: '#ffffff' }}>
-                                  {formatDate(user.dateofJoin)}
-                                </Typography>
-                              </Grid>
-                            </Grid>
+                            <div className="text-center">
+                              {!user.img ? (
+                                <>
+                                  <h3 className="text-light">You have not set a profile icon yet!</h3>
+                                  <input
+                                    accept="image/*"
+                                    className="btn btn-warning"
+                                    type="file"
+                                    onChange={convert}
+                                    id="accept_image"
+                                    onClick={hideImage}
+                                  />
+                                  {image && (
+                                    <>
+                                      <br />
+                                      <img width={200} src={image} alt="User" />
+                                    </>
+                                  )}
+                                  <button className="btn btn-danger p-2" onClick={uploadImage}>
+                                    Set Profile Image
+                                  </button>
+                                </>
+                              ) : (
+                                <>
+                                  <img className="finalImage" src={images} alt="" />
+                                </>
+                              )}
+                            </div>
+                            <div className="table-responsive mt-4">
+                              <table className="table table-bordered table-striped">
+                                <tbody>
+                                  <tr>
+                                    <th className="bg-danger">Name</th>
+                                    <td>{`${user.firstName} ${user.lastName}`}</td>
+                                  </tr>
+                                  <tr>
+                                    <th className="bg-danger">Phone</th>
+                                    <td>{user.phone}</td>
+                                  </tr>
+                                  <tr>
+                                    <th className="bg-danger">Gender</th>
+                                    <td>{user.gender}</td>
+                                  </tr>
+                                  <tr>
+                                    <th className="bg-danger">Address</th>
+                                    <td>{user.address}</td>
+                                  </tr>
+                                  <tr>
+                                    <th className="bg-danger">Email</th>
+                                    <td className="email">{user.email}</td>
+                                  </tr>
+                                  <tr>
+                                    <th className="bg-danger">Date of Join</th>
+                                    <td>{formatDate(user.dateofJoin)}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
                           </>
                         ) : (
                           <p className="text-light">Loading user data...</p>
@@ -222,10 +184,7 @@ const UserProfile = () => {
                 </div>
               </div>
 
-              <div
-                className="container"
-                style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '20px' }}
-              >
+              <div className="container" style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
                 <Link className="btn btn-success m-2 text-light" to="/" style={{ backgroundColor: '#4caf50' }}>
                   Start Your Shopping
                 </Link>
