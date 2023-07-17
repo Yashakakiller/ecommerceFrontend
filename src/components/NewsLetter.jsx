@@ -33,7 +33,7 @@ const NewsLetter = () => {
                 <p>Get Email updates about our latest products and offers.</p>
             </div>
             <form className="newsform" onSubmit={handleSubmit}>
-                <input type="text"  placeholder='Your Name' value={formData.name} name='name' onChange={(e) => handleChange(e)}/>
+                <input type="text" className='my-2'  placeholder='Your Name' value={formData.name} name='name' onChange={(e) => handleChange(e)}/>
                 <input type="text"  placeholder='Your E-mail Address' value={formData.email} name='email' onChange={(e) => handleChange(e)}/>
                 <button>Sign Up</button>
             </form>
