@@ -1,6 +1,34 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
+import axios from 'axios'
+import {Link} from 'react-router-dom'
+import {API_CALL} from '../api'
 
 const Contact = () => {
+  const [formData,setFormData] = useState({
+    name:"",
+    email:"",
+    message:""
+  })
+
+
+  const handleChange = (e) => {
+    setFormData({...formData , [e.target.name] : e.target.value})
+
+    console.log(formData)
+  }
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    const data = await axios.post(`${API_CALL}/contact`,formData);
+    // console.log(data.data)
+    setFormData({
+      name:"",
+      email:"",
+      message:""
+    })
+  }
+
+
   return (
     <>
         <section className='contact_container'>
@@ -53,25 +81,25 @@ We're delighted that you've chosen to reach out to us. Whether you have a questi
         </div>
         
         <div class="contact-form">
-          <form action="" id="contact-form">
+          <form id="contact-form" onSubmit={handleSubmit}>
             <h2>Send Message</h2>
             <div class="input-box">
-              <input type="text" required="true" name="" />
+              <input type="text"  required="true" name="name" onChange={(e) => handleChange(e)}/>
               <span>Full Name</span>
             </div>
             
             <div class="input-box">
-              <input type="email" required="true" name="" />
+              <input type="email" required="true" name="email" onChange={(e) => handleChange(e)} />
               <span>Email</span>
             </div>
             
             <div class="input-box">
-              <textarea required="true" name=""></textarea>
+              <textarea required="true" name="message" onChange={(e) => handleChange(e)}></textarea>
               <span>Type your Message...</span>
             </div>
             
             <div class="input-box">
-              <input type="submit" value="Send" name="" />
+              <input type="submit" value="Send"/>
             </div>
           </form>
         </div>
