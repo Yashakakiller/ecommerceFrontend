@@ -149,6 +149,7 @@ const UserProfile = () => {
                           borderRadius: '20px',
                         }}
                       >
+                        
                         <h3 className="text-center p-3 fs-2">User Profile</h3>
                       </div>
                       <div className={`${classes.cardBody} card-body p-4`}>
