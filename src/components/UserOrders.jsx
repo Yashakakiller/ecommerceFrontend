@@ -71,9 +71,9 @@ const UserOrders = () => {
 
   return (
     <>
-      {localStorage.getItem('token')  && auth ? (
+      {localStorage.getItem('token')  ? (
         <>
-          {orderItems.length == 0 || orderItems === null ? (
+        {auth ? (<>  {orderItems.length == 0 || orderItems === null ? (
             <div className="wishlistContainer">
               <h3>You haven't purchased anything yet!</h3>
               <img alt="" src={images[randomImage]} />
@@ -122,7 +122,8 @@ const UserOrders = () => {
     </section>
   </main>
             </>
-          )}
+          )}</>) : (<><div className="lds-hourglass center "></div>
+          <h3 className="verifyh3">Please wait while we verify your authentication...</h3></>)}
         </>
       ) : (
         <>

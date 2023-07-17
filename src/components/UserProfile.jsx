@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { API_CALL } from '../api';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+
 
 const UserProfile = () => {
   const navigate = useNavigate();
@@ -85,18 +84,6 @@ const UserProfile = () => {
 
   return (
     <>
-      <ToastContainer
-        position="top-center"
-        autoClose={4500}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
       {localStorage.getItem('token') ? (
         <>
           {!auth ? (
@@ -110,10 +97,10 @@ const UserProfile = () => {
                 <div className="row justify-content-center mt-5">
                   <div className="col-lg-8">
                     <div className="usercard">
-                      <div className="card-header bg-danger text-white" style={{ borderRadius: '20px' }}>
+                      <div className="card-header">
                         <h3 className="text-center p-3 fs-2">User Profile</h3>
                       </div>
-                      <div className="card-body p-4" style={{ background: '#000000' }}>
+                      <div className="card-body">
                         {user ? (
                           <>
                             <div className="text-center">
@@ -122,7 +109,6 @@ const UserProfile = () => {
                                   <h3 className="text-light">You have not set a profile icon yet!</h3>
                                   <input
                                     accept="image/*"
-                                    className="btn btn-warning"
                                     type="file"
                                     onChange={convert}
                                     id="accept_image"
@@ -131,44 +117,44 @@ const UserProfile = () => {
                                   {image && (
                                     <>
                                       <br />
-                                      <img width={200} src={image} alt="User" />
+                                      <img className="profile-image" src={image} alt="User" />
                                     </>
                                   )}
-                                  <button className="btn btn-danger p-2" onClick={uploadImage}>
+                                  <button className="set-image-btn" onClick={uploadImage}>
                                     Set Profile Image
                                   </button>
                                 </>
                               ) : (
                                 <>
-                                  <img className="finalImage" src={images} alt="" />
+                                  <img className="profile-image" src={images} alt="" />
                                 </>
                               )}
                             </div>
                             <div className="table-responsive mt-4">
-                              <table className="table table-bordered table-striped">
+                              <table className="user-table">
                                 <tbody>
                                   <tr>
-                                    <th className="bg-danger">Name</th>
+                                    <th>Name</th>
                                     <td>{`${user.firstName} ${user.lastName}`}</td>
                                   </tr>
                                   <tr>
-                                    <th className="bg-danger">Phone</th>
+                                    <th>Phone</th>
                                     <td>{user.phone}</td>
                                   </tr>
                                   <tr>
-                                    <th className="bg-danger">Gender</th>
+                                    <th>Gender</th>
                                     <td>{user.gender}</td>
                                   </tr>
                                   <tr>
-                                    <th className="bg-danger">Address</th>
+                                    <th>Address</th>
                                     <td>{user.address}</td>
                                   </tr>
                                   <tr>
-                                    <th className="bg-danger">Email</th>
-                                    <td className="email">{user.email}</td>
+                                    <th>Email</th>
+                                    <td>{user.email}</td>
                                   </tr>
                                   <tr>
-                                    <th className="bg-danger">Date of Join</th>
+                                    <th>Date of Join</th>
                                     <td>{formatDate(user.dateofJoin)}</td>
                                   </tr>
                                 </tbody>
@@ -184,22 +170,14 @@ const UserProfile = () => {
                 </div>
               </div>
 
-              <div className="container" style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-                <Link className="btn btn-success m-2 text-light" to="/" style={{ backgroundColor: '#4caf50' }}>
+              <div className="container buttons-container">
+                <Link className="action-button start-shopping" to="/">
                   Start Your Shopping
                 </Link>
-                <button
-                  className="btn btn-secondary m-2 text-light"
-                  onClick={deleteUser}
-                  style={{ backgroundColor: '#888888' }}
-                >
+                <button className="action-button delete-account" onClick={deleteUser}>
                   Delete Your Account
                 </button>
-                <Link
-                  className="btn btn-primary m-2 text-light"
-                  to={`/orders/user/${id}`}
-                  style={{ backgroundColor: '#2196f3' }}
-                >
+                <Link className="action-button your-orders" to={`/orders/user/${id}`}>
                   Your Orders
                 </Link>
               </div>
@@ -215,7 +193,7 @@ const UserProfile = () => {
                   <div className="card-body">
                     <h5 className="card-title fs-1">Please Login First</h5>
                     <p className="card-text fs-4">To access this page, you need to login to your account.</p>
-                    <Link to="/login" className="btn btn-secondary" style={{ backgroundColor: '#888888' }}>
+                    <Link to="/login" className="action-button login-button">
                       Login
                     </Link>
                   </div>

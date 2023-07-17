@@ -13,6 +13,144 @@ body{
   width:100%;
 }
 
+
+
+
+/* UserProfile.css */
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.usercard {
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin-bottom: 30px;
+}
+
+.card-header {
+  background-color: #000216;
+  color: #fff;
+  border-radius: 20px 20px 0 0;
+  padding: 20px;
+}
+
+.card-body {
+  padding: 20px;
+  background-color: #cce7d3;
+}
+
+.profile-image {
+  width: 200px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-table th,
+.user-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.user-table th {
+  background-color: #000216;
+  color: #fff;
+  font-weight: bold;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.action-button {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 0 10px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.start-shopping {
+  background-color: #4caf50;
+}
+
+.delete-account {
+  background-color: #888888;
+}
+
+.your-orders {
+  background-color: #2196f3;
+}
+
+.action-button:hover {
+  background-color: #333;
+}
+
+.login-button {
+  background-color: #888888;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*Scrollbar CSS*/
 
  /* width */
