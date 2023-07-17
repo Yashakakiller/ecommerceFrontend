@@ -666,9 +666,8 @@ footer a:hover{
   padding-top: 20px;
 }
 #allProducts .all_box {
-  width: 23%;
-  max-height: 700px;
-  min-width: 250px;
+  width: 230px;
+  height: 580px;
   padding: 20px 12px;
   border: 1px solid #cce7d0;
   border-radius: 25px;
@@ -1092,6 +1091,11 @@ tbody td.active {
 
 
 @media (max-width: 991px) {
+
+
+
+
+
   .contact_container {
     padding-top: 50px;
     padding-bottom: 50px;
@@ -1114,6 +1118,26 @@ tbody td.active {
 
 
 @media (max-width:799px){
+
+  #allProducts .all_box {
+    width: 189px;
+    height: 519px;
+    padding: 20px 12px;
+    border: 1px solid #cce7d0;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+    margin: 15px 0;
+    transition: 0.2s ease;
+}
+
+#allProducts .all_box img {
+  width: 100%;
+  /* max-height: 350px; */
+  height: 230px;
+  border-radius: 20px;
+}
+
   .finalImage{
     width: 200px;
   }
@@ -1259,6 +1283,24 @@ table thead tr th:first-child , tbody tr td:first-child  {
 }
 
 @media (max-width:539px){
+
+  #allProducts .all_box {
+    width: 189px;
+    height: 444px;
+    
+}
+#allProducts .all_box img {
+  width: 100%;
+  /* max-height: 350px; */
+  height: 185px;
+  border-radius: 20px;
+}
+
+#allProducts .all_box .desc h4 {
+  display: none;
+}
+
+
   #newProducts .new_box {
     width: 110px;
     box-shadow: 2px 2px 10px rgba(122,122,122,0.9);
