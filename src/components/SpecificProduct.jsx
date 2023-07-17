@@ -5,7 +5,7 @@ import {API_CALL} from '../api'
 
 
 
-const NewsLetter = () => {
+const SpecificProduct = () => {
     const [formData , setFormData] = useState({
         email:"",
         name:""
@@ -44,4 +44,4 @@ const NewsLetter = () => {
   )
 }
 
-export default NewsLetter
+export default SpecificProduct
