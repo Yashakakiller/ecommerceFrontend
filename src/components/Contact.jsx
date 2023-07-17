@@ -84,17 +84,17 @@ We're delighted that you've chosen to reach out to us. Whether you have a questi
           <form id="contact-form" onSubmit={handleSubmit}>
             <h2>Send Message</h2>
             <div class="input-box">
-              <input type="text"  required="true" name="name" onChange={(e) => handleChange(e)}/>
+              <input type="text"  required="true" value={formData.name}  name="name" onChange={(e) => handleChange(e)}/>
               <span>Full Name</span>
             </div>
             
             <div class="input-box">
-              <input type="email" required="true" name="email" onChange={(e) => handleChange(e)} />
+              <input type="email" required="true" value={formData.email}  name="email" onChange={(e) => handleChange(e)} />
               <span>Email</span>
             </div>
             
             <div class="input-box">
-              <textarea required="true" name="message" onChange={(e) => handleChange(e)}></textarea>
+              <textarea required="true" name="message"  value={formData.message}  onChange={(e) => handleChange(e)}></textarea>
               <span>Type your Message...</span>
             </div>
             
