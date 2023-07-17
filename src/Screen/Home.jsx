@@ -1,5 +1,5 @@
 import React from 'react'
-import { Carousel, Categories, NewArrivals, NewsLetter, RandomProducts, Search } from '../components'
+import { Carousel, Categories, NewArrivals, RandomProducts, Search, SpecificProduct } from '../components'
 
 const Home = () => {
   return (
@@ -8,7 +8,7 @@ const Home = () => {
     <Categories />
     <RandomProducts />
     <NewArrivals />
-    <NewsLetter />
+    <SpecificProduct />
     </>
   )
 }
