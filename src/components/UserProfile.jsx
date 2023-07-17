@@ -93,7 +93,7 @@ const UserProfile = () => {
             </>
           ) : (
             <>
-              <div className="container">
+              <div className="userProfilecontainer">
                 <div className="row justify-content-center mt-5">
                   <div className="col-lg-8">
                     <div className="usercard">
