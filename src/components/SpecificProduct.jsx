@@ -31,8 +31,8 @@ const SpecificProduct = () => {
     <>
         <section id="newsletter" className='section-p1' style={{margin:"0 auto",width:"95%",borderRadius:"30px"}}>
             <div className="newsText">
-                <h4>Sign Up for NewsLetter</h4>
-                <p>Get Email updates about our latest products and offers.</p>
+                <h4>Want a Specific Product</h4>
+                <p>Just mail us!!!</p>
             </div>
             <form className="newsform" onSubmit={handleSubmit}>
                 <input type="text" className='my-2'  placeholder='Your Name' value={formData.name} name='name' onChange={(e) => handleChange(e)}/>
