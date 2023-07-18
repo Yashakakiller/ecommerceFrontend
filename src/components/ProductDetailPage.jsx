@@ -139,7 +139,7 @@ theme="dark"
           </div>
 
           <div className="col-lg-6 col-md-12 col-12 p-desc">
-            <h6>{product.category}</h6>
+            {/* <h6>{product.category}</h6> */}
             <h3 className="py-4">{product.name}</h3>
             <h2>₹{product.price}</h2>
             {product.quantity === 0 || product.quantity === null ? (
