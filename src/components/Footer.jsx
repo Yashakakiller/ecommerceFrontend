@@ -10,7 +10,7 @@ const Footer = () => {
    <>
     <footer id='footer' className='section-p1'>
       <div className="col">
-        <img className='flogo' src="/logo-white.png" alt='logo' style={{width:"80px"}}/>
+        <img className='flogo' src="/logo-white.jpg" alt='logo' style={{width:"80px"}}/>
         <h4>Contact</h4>
         <p><strong>Address</strong> 44 Jawahar Colony Tonk Road Jaipur</p>
         <p><strong>Phone</strong> +91 0000000000</p>
