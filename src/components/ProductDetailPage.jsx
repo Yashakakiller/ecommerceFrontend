@@ -105,7 +105,7 @@ draggable
 pauseOnHover
 theme="dark"
 />
-      <section className="container sproduct mb-5 pt-5">
+      <section className="container sproduct mb-5 ">
         <div className="row mt-5">
           <div className="col-lg-5 col-md-12 col-12">
             <img

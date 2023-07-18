@@ -417,7 +417,7 @@ p{
 }
 
 #newProducts .new_box img{
-  /* width: 70%; */
+  width: 100%;
   height: 200px;
   border-radius: 20px;
 }
@@ -479,7 +479,8 @@ p{
   color: #cce7d0;
 }
 #relatedProducts .related_box img{
-  max-height: 190px;
+  height: 190px;
+  width: 100%;
   border-radius: 20px;
 }
 #relatedProducts .related_box_parent:hover{
@@ -556,7 +557,7 @@ p{
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  background-image: url('https://www.hdnicewallpapers.com/Walls/Big/Sunset/Tropical_Sunset_Background_Wallpaper.jpg');
+  background-image: url('https://png.pngtree.com/back_origin_pic/04/54/74/ef58a62952a6bf42673baa887886db1f.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 20% 30%;
@@ -667,7 +668,7 @@ footer a:hover{
 }
 #allProducts .all_box {
   width: 230px;
-  height: 580px;
+  height: 460px;
   padding: 20px 12px;
   border: 1px solid #cce7d0;
   border-radius: 25px;
@@ -678,7 +679,7 @@ footer a:hover{
 }
 #allProducts .all_box img{
   width: 100%;
-  max-height: 350px;
+  height: 250px;
   border-radius: 20px;
 }
 #allProducts .all_box:hover{
