@@ -90,7 +90,7 @@ const notify = () => toast(response.data.message)
     }
   };
 
-
+console.log(product)
   return (
     <>
     <ToastContainer
@@ -105,7 +105,7 @@ draggable
 pauseOnHover
 theme="dark"
 />
-      <section className="container sproduct mb-5 ">
+      <section className="container sproduct mb-5 pt-5">
         <div className="row mt-5">
           <div className="col-lg-5 col-md-12 col-12">
             <img
@@ -116,8 +116,8 @@ theme="dark"
             />
 
             <div className="small-img-group">
-              {product.otherImages &&
-                product.otherImages.map((otherImage) => (
+              {product.images &&
+                product.images.map((otherImage) => (
                   <div className="small-img-col" key={otherImage}>
                     <img
                       className="small-img"
@@ -139,7 +139,7 @@ theme="dark"
           </div>
 
           <div className="col-lg-6 col-md-12 col-12 p-desc">
-            {/* <h6>{product.category}</h6> */}
+            <h6>{product.category}</h6>
             <h3 className="py-4">{product.name}</h3>
             <h2>₹{product.price}</h2>
             {product.quantity === 0 || product.quantity === null ? (
@@ -196,8 +196,27 @@ theme="dark"
               </button></>)}
               </>
             )}
+   
+            <button
+                    className="buy-btn mt-2 mx-2"
+                    onClick={() => {const notify = () =>toast(product.shapeDescription, {
+                      position: "bottom-left",
+                      autoClose: 10000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "dark",
+                      }); ;
+                    notify()}}
+                    
+                  >About the Product Shape</button>
             <h4 className="mt-5 mb-5">Product Details</h4>
+            
             <span>{product.desc}</span>
+            <hr />
+            {/* <span>{product.shapeDescription}</span> */}
           </div>
         </div>
         <RelatedProducts id={product._id} />
