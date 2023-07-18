@@ -36,7 +36,7 @@ const Contact = () => {
     <div class="section-header">
       <div class="container">
         <h2>Contact Us</h2>
-        <p>Welcome to Meena Cloth House!<br/>
+        <p>Welcome to SRK GEMS!<br/>
 
 We're delighted that you've chosen to reach out to us. Whether you have a question, a comment, or you simply want to share your shopping experience, our team is here to assist you. </p>
       </div>
