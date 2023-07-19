@@ -99,89 +99,201 @@ const Cart = ({ productId }) => {
     }
   };
 
+  // return (
+  //   <>
+  //     {localStorage.getItem('token') ? (
+  //       <>
+  //       {auth ? (<>  {cartItems.length > 0 ? (
+  //           <>
+  //             <ToastContainer
+  //               position="top-center"
+  //               autoClose={5000}
+  //               hideProgressBar={false}
+  //               newestOnTop={false}
+  //               closeOnClick
+  //               rtl={false}
+  //               pauseOnFocusLoss
+  //               draggable
+  //               pauseOnHover
+  //               theme="light"
+  //             />
+  //             <main className="table">
+  //               <section className="table__header">
+  //                 <h3>Cart Items</h3>
+  //               </section>
+  //               <section className="table__body">
+  //                 <table>
+  //                   <thead>
+  //                     <tr>
+  //                       <th>Id</th>
+  //                       <th></th>
+  //                       <th>Name</th>
+  //                       <th>Image</th>
+  //                       <th>Quantity</th>
+  //                       <th>Price</th>
+  //                       <th></th>
+  //                     </tr>
+  //                   </thead>
+  //                   <tbody>
+  //                     {cartItems.map((item) => (
+  //                       <tr key={item.productId}>
+  //                         <td>{item.product._id}</td>
+  //                         <td></td>
+  //                         <td>{item.product.name}</td>
+  //                         <td>₹ {item.product.price}</td>
+  //                         <td>
+  //                           <img src={item.product.img} alt="" />
+  //                         </td>
+  //                         <td>
+  //                           <input
+  //                             style={{
+  //                               background: '#000216',
+  //                               color: '#b99835',
+  //                               fontSize: '20px',
+  //                               width: '100px',
+  //                               padding: '5px',
+  //                             }}
+  //                             type="number"
+  //                             min="1"
+  //                             max={item.product.quantity}
+  //                             value={item.quantity}
+  //                             onChange={(e) => updateQuantity(item.productId, parseInt(e.target.value))}
+  //                           />
+  //                         </td>
+  //                         <td>{item.product.price * item.quantity}</td>
+  //                         <td>
+  //                           <BsTrash style={{ cursor: 'pointer' }} onClick={() => removeFromCart(item.productId)} />
+  //                         </td>
+  //                       </tr>
+  //                     ))}
+  //                   </tbody>
+  //                 </table>
+  //               </section>
+  //             </main>
+  //             <h3 style={{ textAlign: 'center' }}>Your Total - ₹{totalPrice}</h3>
+  //             <button className="btn btn-primary d-block m-auto w-50" onClick={placeOrder}>
+  //               Place Order Now
+  //             </button>
+  //           </>
+  //         ) : (
+  //           <div className="wishlistContainer">
+  //             <h3>No Items in the Cart</h3>
+  //             <img alt="" src={images[randomImage]} />
+  //           </div>
+  //         )}</>) : (<> <div className="lds-hourglass center "></div>
+  //         <h3 className='verifyh3'>Please Wait we are verifying your Authentication</h3></>)}
+        
+  //       </>
+  //     ) : (
+  //       <div className="container">
+  //         <div className="row justify-content-center mt-5">
+  //           <div className="col-lg-6">
+  //             <div className="card">
+  //               <div className="card-body">
+  //                 <h5 className="card-title fs-4">Please Login First</h5>
+  //                 <p className="card-text fs-5">To view your cart, please log in to your account.</p>
+  //                 <Link to="/login" className="btn btn-primary">
+  //                   Login
+  //                 </Link>
+  //               </div>
+  //             </div>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     )}
+  //   </>
+  // );
+
   return (
     <>
       {localStorage.getItem('token') ? (
         <>
-        {auth ? (<>  {cartItems.length > 0 ? (
+          {auth ? (
             <>
-              <ToastContainer
-                position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-              />
-              <main className="table">
-                <section className="table__header">
-                  <h3>Cart Items</h3>
-                </section>
-                <section className="table__body">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Id</th>
-                        <th>Category Name</th>
-                        <th>Name</th>
-                        <th>Image</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {cartItems.map((item) => (
-                        <tr key={item.productId}>
-                          <td>{item.product._id}</td>
-                          <td>{item.product.name}</td>
-                          <td>₹ {item.product.price}</td>
-                          <td>
-                            <img src={item.product.img} alt="" />
-                          </td>
-                          <td>
-                            <input
-                              style={{
-                                background: '#000216',
-                                color: '#b99835',
-                                fontSize: '20px',
-                                width: '100px',
-                                padding: '5px',
-                              }}
-                              type="number"
-                              min="1"
-                              max={item.product.quantity}
-                              value={item.quantity}
-                              onChange={(e) => updateQuantity(item.productId, parseInt(e.target.value))}
-                            />
-                          </td>
-                          <td>{item.product.price * item.quantity}</td>
-                          <td>
-                            <BsTrash style={{ cursor: 'pointer' }} onClick={() => removeFromCart(item.productId)} />
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </section>
-              </main>
-              <h3 style={{ textAlign: 'center' }}>Your Total - ₹{totalPrice}</h3>
-              <button className="btn btn-primary d-block m-auto w-50" onClick={placeOrder}>
-                Place Order Now
-              </button>
+              {cartItems.length > 0 ? (
+                <>
+                  <ToastContainer
+                    position="top-center"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                  />
+                  <main className="table">
+                    <section className="table__header">
+                      <h3>Cart Items</h3>
+                    </section>
+                    <section className="table__body">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Id</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {cartItems.map((item) => (
+                            <tr key={item.productId}>
+                              <td>{item.product._id}</td>
+                              <td>
+                                <img src={item.product.img} alt="" />
+                              </td>
+                              <td>{item.product.name}</td>
+                              <td>₹ {item.product.price}</td>
+                              <td>
+                                <input
+                                  style={{
+                                    background: '#000216',
+                                    color: '#b99835',
+                                    fontSize: '20px',
+                                    width: '100px',
+                                    padding: '5px',
+                                  }}
+                                  type="number"
+                                  min="1"
+                                  max={item.product.quantity}
+                                  value={item.quantity}
+                                  onChange={(e) => updateQuantity(item.productId, parseInt(e.target.value))}
+                                />
+                              </td>
+                              <td>{item.product.price * item.quantity}</td>
+                              <td>
+                                <BsTrash style={{ cursor: 'pointer' }} onClick={() => removeFromCart(item.productId)} />
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </section>
+                  </main>
+                  <h3 style={{ textAlign: 'center' }}>Your Total - ₹{totalPrice}</h3>
+                  <button className="btn btn-primary d-block m-auto w-50" onClick={placeOrder}>
+                    Place Order Now
+                  </button>
+                </>
+              ) : (
+                <div className="wishlistContainer">
+                  <h3>No Items in the Cart</h3>
+                  <img alt="" src={images[randomImage]} />
+                </div>
+              )}
             </>
           ) : (
-            <div className="wishlistContainer">
-              <h3>No Items in the Cart</h3>
-              <img alt="" src={images[randomImage]} />
-            </div>
-          )}</>) : (<> <div className="lds-hourglass center "></div>
-          <h3 className='verifyh3'>Please Wait we are verifying your Authentication</h3></>)}
-        
+            <>
+              <div className="lds-hourglass center "></div>
+              <h3 className="verifyh3">Please Wait we are verifying your Authentication</h3>
+            </>
+          )}
         </>
       ) : (
         <div className="container">
@@ -202,6 +314,8 @@ const Cart = ({ productId }) => {
       )}
     </>
   );
+        
+
 };
 
 export default Cart;
