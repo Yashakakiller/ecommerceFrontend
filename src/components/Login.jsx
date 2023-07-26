@@ -16,7 +16,7 @@ const Login = () => {
         e.preventDefault();
 
         const backend = await axios.post(`${API_CALL}/accounts/user/auth/login` ,data);
-
+        console.log(backend.data.message)
         if(backend.data.success === false){
             return alert(backend.data.message)
         }
@@ -24,7 +24,7 @@ const Login = () => {
         navigate(`/accounts/profile/user/${backend.data.user._id}`) 
 
     }
-
+    
     const valueHandler = (e) => {
         setData({...data , [e.target.name]:e.target.value})
     }
