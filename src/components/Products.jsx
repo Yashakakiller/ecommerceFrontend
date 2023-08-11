@@ -90,7 +90,7 @@ const Products = () => {
   return (
     <>
       <div className="container">
-        <h2 className="text-center mb-4 head3">Our Products</h2>
+        <h2 className="text-center m-4 head3">Our Products</h2>
         <div className="row">
           {data.length > 0 ? (
             data.map((product) => {
