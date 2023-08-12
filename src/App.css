@@ -1256,7 +1256,7 @@ table thead tr th:first-child , tbody tr td:first-child  {
   margin: 3px;
 }
 #newProducts .new_box .desc h5:nth-child(2) {
-  display: none;
+  /* display: none; */
 }
 
 
@@ -1309,7 +1309,7 @@ table thead tr th:first-child , tbody tr td:first-child  {
     padding: 9px;
     margin: 3px;
     /* height: 310px; */
-    height: 198px;
+    height: 192px;
 }
   #newProducts .new_box img {
     /* width: ; */
@@ -1323,6 +1323,6 @@ table thead tr th:first-child , tbody tr td:first-child  {
     margin: 3px;
   }
   #newProducts .new_box .desc h5:nth-child(2) {
-    display: none;
+    /* display: none; */
   }
 }
