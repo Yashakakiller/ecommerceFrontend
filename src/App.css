@@ -1297,9 +1297,7 @@ table thead tr th:first-child , tbody tr td:first-child  {
   font-size: 9px;
   margin: 3px;
 }
-#newProducts .new_box .desc h5:nth-child(2) {
-  /* display: none; */
-}
+
 
 
 #featuredProducts .feat_box {
@@ -1363,8 +1361,5 @@ table thead tr th:first-child , tbody tr td:first-child  {
     color: #1a1a1a;
     font-size: 9px;
     margin: 3px;
-  }
-  #newProducts .new_box .desc h5:nth-child(2) {
-    /* display: none; */
   }
 }
