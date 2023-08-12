@@ -124,7 +124,7 @@ const Products = () => {
                         )}
 
                        {localStorage.getItem("token") && auth ? (<> <button
-                          className="w-50 btn btn-primary d-block my-3 mx-auto"
+                          className="c_add_t_w "
                           onClick={() => {
                             addWishlist(product._id);
                           }}

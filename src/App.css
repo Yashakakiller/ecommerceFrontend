@@ -924,11 +924,14 @@ tbody tr.hide td img {
   height: 0;
   transition: .2s ease-in-out .5s;
 }
-
+.c_add_t_w{
+  display: none;
+}
 
 
 
 @media (max-width: 1000px) {
+ 
   td:not(:first-of-type) {
     min-width: 12.1rem;
   }
