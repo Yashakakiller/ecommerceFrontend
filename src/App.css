@@ -638,6 +638,36 @@ footer a:hover{
 }
 
 
+.p_all_box_container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+.p_all_box{
+  padding: 10px;
+  box-shadow: 10px 10px 20px rgb(33, 32, 32);
+  width: 350px;
+  height: 500px;
+  margin: 15px;
+}
+.p_all_box img{
+  width: 300px;
+  height: 300px;
+  display: block;
+  margin: 10px auto;
+
+}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -895,6 +925,9 @@ tbody tr.hide td img {
   transition: .2s ease-in-out .5s;
 }
 
+
+
+
 @media (max-width: 1000px) {
   td:not(:first-of-type) {
     min-width: 12.1rem;
@@ -1092,8 +1125,14 @@ tbody td.active {
 
 @media (max-width: 991px) {
 
-
-
+  .p_all_box{
+    width: 230px;
+    height: 380px;
+  }
+  .p_all_box img{
+    width: 177px;
+    height: 185px;
+  }
 
 
   .contact_container {
