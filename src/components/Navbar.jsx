@@ -84,7 +84,7 @@ const Navbar = () => {
     //         </button>
     //       </div> */}
         <section id='header'>
-            <Link to="/"><img  src="/logo-white.png" alt="logo" className='logo'/></Link>
+            <Link to="/"><img  src="/logo-white.jpg" alt="logo" className='logo'/></Link>
 
             <div>
               <ul id='navbar'>
