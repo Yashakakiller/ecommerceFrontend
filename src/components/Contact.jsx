@@ -75,7 +75,7 @@ We're delighted that you've chosen to reach out to us. Whether you have a questi
             
             <div class="contact-info-content">
               <h4>Email</h4>
-             <p>yashakakiller@gmail.com</p>
+             <p>srkgems2017@gmail.com</p>
             </div>
           </div>
         </div>
