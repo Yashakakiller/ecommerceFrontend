@@ -93,7 +93,7 @@ const UserProfile = () => {
             </>
           ) : (
             <>
-              <div className="userProfilecontainer">
+              <div className="userProfilecontainer"   style={{overflow:"hidden"}}>
                 <div className="row justify-content-center mt-5">
                   <div className="col-lg-8">
                     <div className="usercard">
@@ -106,8 +106,9 @@ const UserProfile = () => {
                             <div className="text-center">
                               {!user.img ? (
                                 <>
-                                  <h3 className="text-light">You have not set a profile icon yet!</h3>
+                                  <h3 className="text-dark">You have not set a profile icon yet!</h3>
                                   <input
+                                
                                     accept="image/*"
                                     type="file"
                                     onChange={convert}
