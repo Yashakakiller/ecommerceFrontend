@@ -141,6 +141,7 @@ theme="dark"
           <div className="col-lg-6 col-md-12 col-12 p-desc">
             {/* <h6>{product.category}</h6> */}
             <h3 className="py-4">{product.name}</h3>
+            <h5 className="py-2">{product.viewCount} People Viewed This Product</h5>
             <h2>₹{product.price}</h2>
             {product.quantity === 0 || product.quantity === null ? (
               <h3 className="text-danger">Out of Stock!</h3>
