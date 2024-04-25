@@ -7,7 +7,7 @@ import Home from './Screen/Home';
 
 
 
-
+// class based , function  based
 
 const App = () => {
   return (
