@@ -9,8 +9,8 @@ import {AiFillCloseCircle} from 'react-icons/ai'
 import axios from 'axios';
 
 const Navbar = () => {
-  // const [searchTerm, setSearchTerm] = useState('');
-  // const [searchResults, setSearchResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
 
   const [user, setUser] = useState([]);
   const [auth , setAuth] = useState(false)
@@ -26,6 +26,9 @@ const Navbar = () => {
             },
           }
         );
+
+
+        console.log(response)
        if(response.data.success){
          setUser(response.data.data);
          setAuth(true)
@@ -38,16 +41,16 @@ const Navbar = () => {
     fetchData();
   }, []);
 
-  // const handleSearch = async () => {
-  //   try {
-  //     const response = await axios.get(`${API_CALL}/products/searchproduct/name`, {
-  //       params: { query: searchTerm },
-  //     });
-  //     setSearchResults(response.data.products);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+  const handleSearch = async () => {
+    try {
+      const response = await axios.get(`${API_CALL}/products/searchproduct/name`, {
+        params: { query: searchTerm },
+      });
+      setSearchResults(response.data.products);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const navigate = useNavigate();
 
@@ -77,12 +80,7 @@ const Navbar = () => {
   return (
   
     <>
-    {/* <div className="d-flex">
-    //         <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-    //         <button className="btn btn-primary mx-2" onClick={handleSearch}>
-    //           Search
-    //         </button>
-    //       </div> */}
+
         <section id='header'>
             <Link to="/"><img  src="/logo-white.jpg" alt="logo" className='logo'/></Link>
 

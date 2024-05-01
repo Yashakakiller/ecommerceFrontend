@@ -33,6 +33,7 @@ const ProductsDetailPage = () => {
           setAuth(true)
         }
         setUser(response.data.data);
+        // mere user authenctiated and i got my user details 
       } catch (error) {
         console.log(error);
       }
@@ -48,6 +49,8 @@ const ProductsDetailPage = () => {
         setProduct(response.data.product);
         console.log(response.data.product);
         setSelectedImage(response.data.product.img); // Set the default image
+
+        // i got my product details
       } catch (error) {
         console.log(error);
       }

@@ -18,6 +18,8 @@ const AllProducts = () => {
         },
       }
     );
+    console.log(backend)
+    console.log(currentPage)
     setTotalPages(backend.data.totalPages);
     setProducts(backend.data.products);
   }
