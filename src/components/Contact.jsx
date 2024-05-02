@@ -65,8 +65,8 @@ We're delighted that you've chosen to reach out to us. Whether you have a questi
             
             <div class="contact-info-content">
               <h4>Phone</h4>
-              <p>+66 902808388</p>
-              <p>+91 8290200229</p>
+              <p>+66 000000000</p>
+              <p>+91 000000000</p>
             </div>
           </div>
           
@@ -77,8 +77,8 @@ We're delighted that you've chosen to reach out to us. Whether you have a questi
             
             <div class="contact-info-content">
               <h4>Email</h4>
-             <p>srkgems2017@gmail.com</p>
-             <p>akshatjain98290@gmail.com</p>
+             <p>example@gmail.com</p>
+             <p>example@gmail.com</p>
              
             </div>
           </div>
